@@ -2,7 +2,8 @@
 # define FT_PRINTF_H
 
 #include <stdarg.h>
+#include <stdio.h>
 
-int ft_printf(const char , …);
+int 		ft_printf(const char* , ...);
 
 #endif
