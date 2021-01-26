@@ -3,5 +3,5 @@
 
 int main()
 {
-	ft_printf("hello");
+	ft_printf("hello\nbye\n");
 }
