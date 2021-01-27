@@ -15,7 +15,7 @@ int 		ft_printf(const char* , ...);
 int			check(char *format);
 int			check_flag(char *format);
 int			check_type(char *format);
-int			check_precision(char *format):
+int			check_precision(char *format);
 int			check_specifier(char *format);
 
 #endif
