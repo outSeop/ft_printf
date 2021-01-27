@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 int 		ft_printf(const char* , ...);
-int			check_tpye(char *tpye);
+int			check_type(char *tpye);
 int			check_specifier(char *str);
 int			check_flag(char *str);
 

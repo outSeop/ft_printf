@@ -2,5 +2,5 @@
 
 int main()
 {
-	printf("%0*.*d", 5, 4, 3);
+	printf("%-3d", 1);
 }

@@ -1,17 +1,18 @@
 #include "ft_printf.h"
 
+va_list	g_ap;
 int			ft_printf(const char *format, ...)
 {
-	va_list	ap;
 	int		i;
 	char	*detail_format;
 
-	va_start(ap, format);
+	va_start(g_ap, format);
 	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
+			detail_format = check_type(format[i]);
 
 
 		}
