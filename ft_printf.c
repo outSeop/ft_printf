@@ -27,13 +27,13 @@ int			check(const char *format)
 	}
 	return (1);
 }
-/*
-int			check_type(char *format)
+
+int			check_type(const char *format)
 {
 	return (check_flag(format));
 }
 
-int			check_flag(char *format)
+int			check_flag(const char *format)
 {
 	if (*format == '-')
 		check_width(++format)
@@ -46,7 +46,7 @@ int			check_flag(char *format)
 	return (1);
 }
 
-int			check_width(char *format)
+int			check_width(const char *format)
 {
 	int		width;
 	int		input_width;
@@ -68,7 +68,7 @@ int			check_width(char *format)
 	return (1);
 }
 
-int			check_precision(char *format, int width)
+int			check_precision(const char *format, int width)
 {
 	int		precision;
 
@@ -86,4 +86,3 @@ int			check_precision(char *format, int width)
 	//check_specifier(format);
 	return(1);
 }
-*/
