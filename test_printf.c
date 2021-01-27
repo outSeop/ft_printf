@@ -2,6 +2,5 @@
 
 int main()
 {
-	char test = '\n';
-	printf("%c\n", test);
+	printf("%0*.*d", 5, 4, 3);
 }

@@ -12,33 +12,33 @@
 
 #include "libft.h"
 
-int				get_len(long long tmp)
+int				get_len(long long )
 {
-	if (tmp < 10)
+	if ( < 10)
 		return (1);
-	return (get_len(tmp / 10) + 1);
+	return (get_len( / 10) + 1);
 }
 
 char			*ft_itoa(int n)
 {
-	long long	tmp;
+	long long	;
 	int			len;
 	char		*res;
 
 	len = 0;
-	tmp = n;
+	 = n;
 	if (n < 0)
 	{
 		len++;
-		tmp = -tmp;
+		 = -;
 	}
-	len += get_len(tmp);
+	len += get_len();
 	if (!(res = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	res[len] = '\0';
-	res[--len] = tmp % 10 + '0';
-	while (tmp /= 10)
-		res[--len] = tmp % 10 + '0';
+	res[--len] =  % 10 + '0';
+	while ( /= 10)
+		res[--len] =  % 10 + '0';
 	if (n < 0)
 		res[0] = '-';
 	return (res);
