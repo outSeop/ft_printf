@@ -60,7 +60,7 @@ int			check_width(const char *format)
 		while (ft_isdigit(*format))
 		{
 			width *= 10;
-			width += ft_atoi(*format);
+			width += (int)*format;
 			format++;
 		}
 	}
