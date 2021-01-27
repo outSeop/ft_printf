@@ -82,6 +82,6 @@ int			check_precision(char *format, int width)
 			format++;
 		}
 	}
-	check_specifier(format);
+	//check_specifier(format);
 	return(1);
 }
