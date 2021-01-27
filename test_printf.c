@@ -2,5 +2,6 @@
 
 int main()
 {
-	printf("%00d|", 1);
+	int *a = NULL;
+	printf("%d", sizeof(a));
 }
