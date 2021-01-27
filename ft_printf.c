@@ -5,7 +5,6 @@ va_list	g_ap;
 int			ft_printf(const char *format, ...)
 {
 	int		i;
-	char	*detail_format;
 
 	va_start(g_ap, format);
 	i = 0;
@@ -21,6 +20,7 @@ int			ft_printf(const char *format, ...)
 		}
 		format++;
 	}
+	return (1);
 }
 /*
 int			check_type(char *format, int *idx)
