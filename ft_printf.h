@@ -12,10 +12,10 @@
 #include "libft/libft.h"
 
 int 		ft_printf(const char* , ...);
-int			check(char *format);
-int			check_flag(char *format);
-int			check_type(char *format);
-int			check_precision(char *format);
-int			check_specifier(char *format);
+int			check(const char *format);
+int			check_flag(const char *format);
+int			check_type(const char *format);
+int			check_precision(const char *format);
+int			check_specifier(const char *format);
 
 #endif

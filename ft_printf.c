@@ -11,7 +11,7 @@ int			ft_printf(const char *format, ...)
 	va_end(g_ap);
 	return (1);
 }
-int			check(char *format)
+int			check(const char *format)
 {
 	while (*format)
 	{
