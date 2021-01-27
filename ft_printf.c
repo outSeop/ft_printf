@@ -17,7 +17,7 @@ int			check(char *format)
 	{
 		if (*format == '%')
 		{
-			check_type(format);
+			//check_type(format);
 		}
 		else
 		{
