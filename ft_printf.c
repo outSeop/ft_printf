@@ -79,7 +79,7 @@ int			check_precision(const char *format, int width)
 		while (ft_isdigit(*format))
 		{
 			precision *= 10;
-			precision += ft_atoi(*format);
+			precision += (int)*format;
 			format++;
 		}
 	}
