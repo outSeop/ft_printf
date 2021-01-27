@@ -75,7 +75,7 @@ int			check_width(const char *format)
 int			check_precision(const char *format, int width)
 {
 	int		precision;
-	int		len;
+	int		prec_len;
 
 	precision = 0;
 	if (*format == '.')
@@ -96,16 +96,18 @@ int			check_precision(const char *format, int width)
 			}
 		}
 	}
-	len = width > precision ? width : precision;
-	check_specifier(format, len);
+	prec_len = width > precision ? width : precision;
+	check_specifier(format, prec_len);
+
 	return(1);
 }
 
-char		*check_specifier(const char *format, int len)
+char		*check_specifier(const char *format, int prec_len)
 {
 	char	*argument;
 	char	*string;
 	int		size;
+	int		arg_len;
 
 	if (*format == 'c')
 		argument = va_arg(g_ap, char);
@@ -124,9 +126,15 @@ char		*check_specifier(const char *format, int len)
 	else if (*format == 'X')
 		argument = va_arg(g_ap, int);
 	format++;
-	size = ft_strlen(argument);
-	size = len > size ? len : size;
+	arg_len = ft_strlen(argument);
+	size = prec_len > size ? prec_len : size;
 	string = malloc(size + 1);
-	return (string);
+	my_strbcpy(string, argument, size, arg_len);
 	// cspdiuxX
+}
+
+void		my_strbcpy(char *dest, char *src, int size, int arg_len)
+{
+	while (arg_len + 1)
+		dest[size--] = src[arg_len--];
 }
