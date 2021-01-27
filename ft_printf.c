@@ -17,7 +17,7 @@ int			check(const char *format)
 	{
 		if (*format == '%')
 		{
-			//check_type(format);
+			check_type(format);
 		}
 		else
 		{
@@ -36,10 +36,10 @@ int			check_type(const char *format)
 int			check_flag(const char *format)
 {
 	if (*format == '-')
-		check_width(++format)
+		check_width(++format);
 
 	else if (*format == '0')
-		check_width(++format)
+		check_width(++format);
 
 	else
 		check_width(format);
