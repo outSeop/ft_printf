@@ -25,6 +25,7 @@ int			check(char *format)
 		}
 		format++;
 	}
+	return (1);
 }
 int			check_type(char *format)
 {
@@ -41,6 +42,7 @@ int			check_flag(char *foramt)
 
 	else
 		check_width(format);
+	return (1);
 }
 
 int			check_width(char *format)
@@ -62,6 +64,7 @@ int			check_width(char *format)
 		}
 	}
 	check_precision(format, width);
+	return (1);
 }
 
 int			check_precision(char *format, int width)
@@ -80,4 +83,5 @@ int			check_precision(char *format, int width)
 		}
 	}
 	check_specifier(format);
+	return(1);
 }
