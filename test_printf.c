@@ -2,5 +2,5 @@
 
 int main()
 {
-	printf("%-3d", 1);
+	printf("%00d|", 1);
 }

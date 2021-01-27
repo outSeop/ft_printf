@@ -4,7 +4,9 @@
 #define ERROR -1
 #define FALSE 0
 #define TRUE 1
+
 #include <stdarg.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 
