@@ -32,7 +32,7 @@ int			check_type(char *format)
 	return (check_flag(format));
 }
 
-int			check_flag(char *foramt)
+int			check_flag(char *format)
 {
 	if (*format == '-')
 		check_width(++format)
