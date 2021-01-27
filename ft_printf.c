@@ -13,7 +13,7 @@ int			ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			check_type(format);
+		//	check_type(format);
 		}
 		else
 		{
@@ -22,7 +22,7 @@ int			ft_printf(const char *format, ...)
 		format++;
 	}
 }
-
+/*
 int			check_type(char *format, int *idx)
 {
 	return (check_flag(format, idx));
@@ -60,3 +60,4 @@ int			check_width(char *format, int *idx)
 		}
 	}
 }
+*/
