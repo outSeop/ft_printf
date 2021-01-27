@@ -27,6 +27,7 @@ int			check(char *format)
 	}
 	return (1);
 }
+/*
 int			check_type(char *format)
 {
 	return (check_flag(format));
@@ -85,3 +86,4 @@ int			check_precision(char *format, int width)
 	//check_specifier(format);
 	return(1);
 }
+*/
