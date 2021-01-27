@@ -2,5 +2,5 @@
 
 int main()
 {
-	ft_printf("hello\nbye\n");
+	ft_printf("%d", 1);
 }
