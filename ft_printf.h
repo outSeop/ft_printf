@@ -12,8 +12,10 @@
 #include "libft/libft.h"
 
 int 		ft_printf(const char* , ...);
-int			check_type(char *tpye);
-int			check_specifier(char *str);
-int			check_flag(char *str);
+int			check(char *format);
+int			check_flag(char *format);
+int			check_type(char *format);
+int			check_precision(char *format):
+int			check_specifier(char *format);
 
 #endif
