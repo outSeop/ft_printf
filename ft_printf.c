@@ -100,7 +100,7 @@ int			check_precision(const char *format, int width)
 	}
 	prec_len = width > precision ? width : precision;
 	tag = check_specifier(format, prec_len);
-	my_str_cpy(tag->argument, '0', precision);
+	tag->argument = my_str_cpy(tag->argument, '0', precision);
 	return(1);
 }
 
@@ -131,7 +131,7 @@ t_tag		*check_specifier(const char *format, int prec_len)
 	return (tag);
 }
 
-void		my_str_cpy(char *str, char c, int nbr)
+char		*my_str_cpy(char *str, char c, int nbr)
 {
 	char	*temp;
 	int		size;
@@ -139,15 +139,17 @@ void		my_str_cpy(char *str, char c, int nbr)
 	int		j;
 
 	size = ft_strlen(str);
-	if (size > nbr)
-		return ;
+	if (size >= nbr)
+		return (str);
 	temp = malloc(nbr + 1);
-	i = nbr - size;
-	while (i + 1)
+	i = 0;
+	while (i < nbr - size)
 		temp[i++] = c;
 	j = 0;
 	while (str[j])
-		temp[i + j] = str[j++];
+		temp[i + j - 1] = str[j++];
+	temp[i + j] = '\0';
 	free(str);
 	str = temp;
+	return (str);
 }
