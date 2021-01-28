@@ -51,7 +51,7 @@ int			check_width(const char *format)
 {
 	int		width;
 	int		input_width;
-	char	*argument;
+	char	*tag->argument;
 
 	if (*format == '*')
 	{
@@ -74,8 +74,10 @@ int			check_width(const char *format)
 
 int			check_precision(const char *format, int width)
 {
+	int		i;
 	int		precision;
 	int		prec_len;
+	t_tag	*tag;
 
 	precision = 0;
 	if (*format == '.')
@@ -97,44 +99,55 @@ int			check_precision(const char *format, int width)
 		}
 	}
 	prec_len = width > precision ? width : precision;
-	check_specifier(format, prec_len);
-
+	tag = check_specifier(format, prec_len);
+	my_str_cpy(tag->argument, '0', precision);
 	return(1);
 }
 
-char		*check_specifier(const char *format, int prec_len)
+t_tag		*check_specifier(const char *format, int prec_len)
 {
-	char	*argument;
-	char	*string;
-	int		size;
-	int		arg_len;
+	t_tag	*tag;
 
 	if (*format == 'c')
-		argument = va_arg(g_ap, char);
+		tag->argument = va_arg(g_ap, char);
 	else if (*format == 's')
-		argument = va_arg(g_ap, char*);
+		tag->argument = va_arg(g_ap, char*);
 	else if (*format == 'p')
-		argument = va_arg(g_ap, double);
+		tag->argument = va_arg(g_ap, double);
 	else if (*format == 'd')
-		argument = va_arg(g_ap, int);
+		tag->argument = va_arg(g_ap, int);
 	else if (*format == 'i')
-		argument = va_arg(g_ap, int);
+		tag->argument = va_arg(g_ap, int);
 	else if (*format == 'u')
-		argument = va_arg(g_ap, int);
+		tag->argument = va_arg(g_ap, int);
 	else if (*format == 'x')
-		argument = va_arg(g_ap, int);
+		tag->argument = va_arg(g_ap, int);
 	else if (*format == 'X')
-		argument = va_arg(g_ap, int);
+		tag->argument = va_arg(g_ap, int);
 	format++;
-	arg_len = ft_strlen(argument);
+	tag->arg_len = ft_strlen(tag->argument);
 	size = prec_len > size ? prec_len : size;
-	string = malloc(size + 1);
-	my_strbcpy(string, argument, size, arg_len);
-	// cspdiuxX
+	tag->print_out = malloc(size + 1);
+	return (tag);
 }
 
-void		my_strbcpy(char *dest, char *src, int size, int arg_len)
+void		my_str_cpy(char *str, char c, int nbr)
 {
-	while (arg_len + 1)
-		dest[size--] = src[arg_len--];
+	char	*temp;
+	int		size;
+	int		i;
+	int		j;
+
+	size = ft_strlen(str);
+	if (size > nbr)
+		return ;
+	temp = malloc(nbr + 1);
+	i = nbr - size;
+	while (i + 1)
+		temp[i++] = c;
+	j = 0;
+	while (str[j])
+		temp[i + j] = str[j++];
+	free(str);
+	str = temp;
 }
