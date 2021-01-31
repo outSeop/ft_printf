@@ -1,21 +1,8 @@
 #include "ft_printf.h"
 
-void func(char **str);
 
 int main()
 {
-	char *str[20];
-	(*str) = "1234567890abcdefg";
-	func(str);
-	printf("%s", *str);
+	printf("%3*.5d", 4, 5);
 
-}
-void func(char **str)
-{
-	(*str)++;
-	(*str)++;
-	(*str)++;
-	(*str)++;
-	(*str)++;
-	(*str)++;
 }

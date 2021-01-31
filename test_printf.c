@@ -7,9 +7,7 @@ void	func(char *format, ...);
 
 int main()
 {
-	func("3.5d");
-
-
+	func("-3.5d");
 }
 
 void	func(char *format, ...)
@@ -26,6 +24,8 @@ void	func(char *format, ...)
 
 	va_end(g_ap);
 
+
+	printf("sign: [%d]\n", tag->sign);
 	printf("fill: [%c]\n", tag->fill);
 	printf("width: [%d]\n", tag->width);
 	printf("prec: [%d]\n", tag->prec_len);
