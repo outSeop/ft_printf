@@ -3,6 +3,5 @@
 
 int main()
 {
-	printf("%3*.5d", 4, 5);
-
+	printf("%c\n", "123"[2]);
 }

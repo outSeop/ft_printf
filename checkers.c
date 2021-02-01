@@ -1,127 +1,129 @@
 #include "ft_printf.h"
 
-
-int			check(const char *format)
+int			check(char **format, t_tag *tag)
 {
-	while (*format)
+
+	while (**format)
 	{
-		if (*format == '%')
+		if (**format == '%')
 		{
-			check_type(format);
+			(*format)++;
+			check_type(format, tag);
 		}
 		else
 		{
-			write(1, format, 1);
+			write(1, *format, 1);
 		}
-		format++;
+		(*format)++;
+	}
+	return (1);
+}
+int			check_type(char **format, t_tag *tag)
+{
+	check_flag(format, tag);
+	check_width(format, tag);
+	check_precision(format, tag);
+	check_specifier(format, tag);
+}
+
+int			check_flag(char **format, t_tag *tag)
+{
+	while (**format)
+	{
+		if (**format == '-')
+			tag->fill = '-';
+		else if (**format == '0')
+			tag->fill = '0';
+		else if (**format == ' ')
+			tag->sign = '+';
+		else
+			return (1);
+		(*format)++;
 	}
 	return (1);
 }
 
-int			check_type(const char *format)
-{
-	t_tag	*tag;
-
-	tag = initTag();
-	check_flag(format++, tag);
-	check_width(format++, tag);
-	check_precision(format++, tag);
-	check_specifier(format++, tag);
-}
-
-int			check_flag(const char *format, t_tag *tag)
-{
-	int		i;
-
-	i = 0;
-	while (*format)
-	{
-		if (*format == '-')
-			tag->fill = '-';
-		else if (*format == '0')
-			tag->fill = '0';
-		else if (*format == ' ')
-			tag->sign = '+';
-		else
-			return (i);
-		format++;
-		i++;
-	}
-	return (i);
-}
-
-int			check_width(const char *format, t_tag *tag)
+int			check_width(char **format, t_tag *tag)
 {
 	int		width;
 
-	if (*format == '*')
+
+	if (**format == '*')
 	{
 		width = va_arg(g_ap, int);
-		format++;
+		(*format)++;
 	}
 	else
 	{
 		width = 0;
-		while (ft_isdigit(*format))
+		while (ft_isdigit(**format))
 		{
+
 			width *= 10;
-			width += *format - '0';
-			format++;
+			width += **format - '0';
+			(*format)++;
 		}
 	}
 	tag->width = width;
 	return (1);
 }
 
-int			check_precision(const char *format, t_tag *tag)
+int			check_precision(char **format, t_tag *tag)
 {
-	int		i;
-
-	i = 0;
-	if (*format == '.')
+	if (**format == '.')
 	{
-		format++;
-		i++;
-		if (*format == '*')
+		(*format)++;
+		if (**format == '*')
 		{
 			tag->prec_len = va_arg(g_ap, int);
-			format++;
-			i++;
+			(*format)++;
 		}
 		else
 		{
-			while (ft_isdigit(*format))
+			while (ft_isdigit(**format))
 			{
 				tag->prec_len *= 10;
-				tag->prec_len += *format - '0';
-				format++;
-				i++;
+				tag->prec_len += **format - '0';
+				(*format)++;
 			}
 		}
 	}
-	return(i);
+	return(1);
 }
 
-int			check_specifier(const char *format, t_tag *tag)
+int			check_specifier(char **format, t_tag *tag)
 {
-	if (*format == 'c')
-	tag->specifier = *format;
-	else if (*format == 's')
-	tag->specifier = *format;
-	else if (*format == 'p')
-	tag->specifier = *format;
-	else if (*format == 'd')
-	tag->specifier = *format;
-	else if (*format == 'i')
-	tag->specifier = *format;
-	else if (*format == 'u')
-	tag->specifier = *format;
-	else if (*format == 'x')
-	tag->specifier = *format;
-	else if (*format == 'X')
-	tag->specifier = *format;
-
-	format++;
+	if (**format == 'c')
+	{
+		tag->specifier = **format;
+		tag->argument = trance_c(va_arg(g_ap, int));
+	}
+	else if (**format == 's')
+	{
+		tag->specifier = **format;
+		tag->argument = trance_s(va_arg(g_ap, char*));
+	}
+	else if (**format == 'p')
+	{
+		tag->specifier = **format;
+		tag->argument = trance_p(va_arg(g_ap, void*));
+	}
+	else if (**format == 'd')
+	{
+		tag->specifier = **format;
+		tag->argument = trance_d(va_arg(g_ap, int));
+	}
+	else if (**format == 'i')
+	tag->specifier = **format;
+	else if (**format == 'u')
+	{
+		tag->specifier = **format;
+		tag->argument = trance_u(va_arg(g_ap, unsigned int));
+	}
+	else if (**format == 'x')
+	tag->specifier = **format;
+	else if (**format == 'X')
+	tag->specifier = **format;
 	// tag->arg_len = ft_strlen(tag->argument);
 	return (1);
 }
@@ -163,6 +165,101 @@ t_tag		*initTag()
 	return (tag);
 }
 
+
+char		*trance_c(char c)
+{
+	char	*str;
+
+	str = malloc(sizeof(c) + 1);
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
+}
+
+char		*trance_s(char *s)
+{
+	return (s);
+}
+
+char		*trance_d(int d)
+{
+	char	*str;
+
+	str = ft_itoa(d);
+	return (str);
+}
+
+char		*trance_u(unsigned int u)
+{
+	unsigned int	i;
+	char			*str;
+
+	i = 4294967295;
+	printf("test: %s", my_itoa(i));
+	return (str);
+}
+
+char		*trance_p(void *p)
+{
+	long long	lp;
+	char		*address;
+	int			size;
+	long long	divider;
+
+	lp = (long long)p;
+	if(!(address = malloc(17)))
+		return (NULL);
+	ft_memset(address, '0', 17);
+	address[16] = '\0';
+	size = 16;
+	divider = 1;
+	while (divider < lp)
+	{
+		divider *= 16;
+		size--;
+	}
+	divider /= 16;
+	while (divider > 0)
+	{
+		address[size++] = "0123456789ABCDEF"[lp / divider];
+		lp %= divider;
+		divider /= 16;
+	}
+	return (address);
+}
+
+char			*my_itoa(unsigned int n)
+{
+	long long	tmp;
+	int			len;
+	char		*res;
+
+	len = 0;
+	tmp = n;
+	if (n < 0)
+	{
+		len++;
+		tmp = -tmp;
+	}
+	len += a_get_len(tmp);
+	if (!(res = (char *)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	res[len] = '\0';
+	res[--len] = tmp % 10 + '0';
+	while (tmp /= 10)
+		res[--len] = tmp % 10 + '0';
+	if (n < 0)
+		res[0] = '-';
+	return (res);
+}
+
+
+int				a_get_len(long long tmp)
+{
+	if (tmp < 10)
+		return (1);
+	return (a_get_len(tmp / 10) + 1);
+}
 
 /*
 ** 할 것
