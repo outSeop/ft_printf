@@ -114,19 +114,28 @@ int			check_specifier(char **format, t_tag *tag)
 		tag->argument = trance_d(va_arg(g_ap, int));
 	}
 	else if (**format == 'i')
-	tag->specifier = **format;
+	{
+		tag->specifier = **format;
+		tag->argument = trance_d(va_arg(g_ap, int));
 	else if (**format == 'u')
 	{
 		tag->specifier = **format;
 		tag->argument = trance_u(va_arg(g_ap, unsigned int));
 	}
 	else if (**format == 'x')
-	tag->specifier = **format;
+	{
+		tag->specifier = **format;
+		tag->argument = trance_hex(va_arg(g_ap, int), "0123456789abcdef");
+	}
 	else if (**format == 'X')
-	tag->specifier = **format;
+	{
+		tag->specifier = **format;
+		tag->argument = trance_hex(va_arg(g_ap, int), "0123456789ABCDEF");
+	}
 	// tag->arg_len = ft_strlen(tag->argument);
 	return (1);
 }
+
 
 char		*my_str_cpy(char *str, char c, int nbr)
 {
@@ -226,6 +235,54 @@ char		*trance_p(void *p)
 		divider /= 16;
 	}
 	return (address);
+}
+
+char		*trance_hex(int hex, char *arr)
+{
+	char	*str;
+	char	*bin;
+	int		sum;
+	int		i;
+
+	str = malloc(9);
+	i = 0;
+	bin = trance_bin(hex);
+	sum = 0;
+	i = 0;
+	while (i < 32)
+	{
+		sum += (bin[i + 0] - '0') * 8;
+		sum += (bin[i + 1] - '0') * 4;
+		sum += (bin[i + 2] - '0') * 2;
+		sum += (bin[i + 3] - '0') * 1;
+		str[i / 4] = arr[sum];
+		i += 4;
+		sum = 0;
+	}
+	str[i / 4] = '\0';
+	return (str);
+}
+
+char		*trance_bin(int n)
+{
+	unsigned int	a;
+	int				i;
+	char			*arr;
+
+	a = 0x80000000;
+	arr = malloc(33);
+	arr[32] = '\0';
+	i = 0;
+	while (i < 32)
+	{
+		if ((a & n) == a)
+			arr[i] = '1';
+		else
+			arr[i] = '0';
+		a >>= 1;
+		i++;
+	}
+	return (arr);
 }
 
 char			*my_itoa(unsigned int n)
