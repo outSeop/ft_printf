@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: inssong </var/mail/inssong>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/03 19:13:09 by inssong           #+#    #+#             */
+/*   Updated: 2021/02/03 19:30:14 by inssong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 
@@ -23,7 +35,7 @@ int				check(char **format, t_tag *tag)
 		{
 			tag = initTag();
 			check_type(format, tag);
-			free(tag);
+			free(tag->argument);
 		}
 		else
 			write(1, *format, 1);
