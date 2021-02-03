@@ -26,7 +26,8 @@ int				check_type(char **format, t_tag *tag)
 	check_specifier(format, tag);
 	tag->argument = combine_fill(tag, tag->prec_len, '0');
 	tag->argument = combine_fill(tag, tag->width, tag->fill);
-	write(1, tag->argument, tag->arg_len);
+	//write(1, tag->argument, tag->arg_len);
+	printf("%s", tag->argument);
 	return (1);
 }
 
@@ -200,28 +201,26 @@ char			*trance_p(void *p)
 {
 	long long	lp;
 	char		*address;
-	int			size;
+	int			i;
 	long long	divider;
 
 	lp = (long long)p;
-	if(!(address = malloc(17)))
+	if(!(address = malloc(20)))
 		return (NULL);
-	ft_memset(address, '0', 17);
-	address[16] = '\0';
-	size = 16;
 	divider = 1;
 	while (divider < lp)
-	{
 		divider *= 16;
-		size--;
-	}
 	divider /= 16;
+	address[0] = '0';
+	address[1] = 'x';
+	i = 2;
 	while (divider > 0)
 	{
-		address[size++] = "0123456789ABCDEF"[lp / divider];
+		address[i++] = "0123456789ABCDEF"[lp / divider];
 		lp %= divider;
 		divider /= 16;
 	}
+	address[i] = '\0';
 	return (address);
 }
 

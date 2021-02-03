@@ -2,6 +2,8 @@
 
 int main()
 {
-	printf("hello %*s", "world");
+	int i;
+
+	printf("%.3p", &i);
 }
 
