@@ -23,7 +23,6 @@ int				check(char **format, t_tag *tag)
 		{
 			initTag(tag);
 			check_type(format, tag);
-			free(tag->argument);
 		}
 		else
 			write(1, *format, 1);
