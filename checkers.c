@@ -216,7 +216,7 @@ char			*trance_p(void *p)
 	i = 2;
 	while (divider > 0)
 	{
-		address[i++] = "0123456789ABCDEF"[lp / divider];
+		address[i++] = "0123456789abcdef"[lp / divider];
 		lp %= divider;
 		divider /= 16;
 	}
