@@ -10,7 +10,7 @@ int main()
 	int i = 123;
 
 	printf("printf: [%22.10d]\n", i);
-	func("func: [%22.10d]\n", i);
+	  func("functi: [%22.10d]\n", i);
 }
 
 void	func(char *format, ...)
