@@ -32,7 +32,7 @@ int						check_flag(char **format, t_tag *tag);
 int						check_width(char **format, t_tag *tag);
 int						check_precision(char **format, t_tag *tag);
 int						check_specifier(char **format, t_tag *tag);
-void					*initTag();
+void					*initTag(t_tag *tag);
 char					*trance_c(char c);
 char					*trance_s(char *s);
 char					*trance_d(int d);
