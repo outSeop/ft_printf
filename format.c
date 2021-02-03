@@ -1,5 +1,13 @@
 #include "ft_printf.h"
 
+char			*algin(t_tag *tag)
+{
+	if (tag->fill == '-')
+		return (align_left(tag));
+	else
+		return (combine_fill(tag, tag->width, tag->fill));
+}
+
 char			*combine_fill(t_tag *tag, int size, char fill)
 {
 	char		*result;
@@ -23,4 +31,23 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 	free(tag->argument);
 	tag->arg_len = total_size;
 	return (result);
-}
+	}
+
+	char		*align_left(t_tag *tag)
+	{
+		char	*result;
+		int		total_size;
+		int		i;
+
+		if (tag->arg_len > tag->width)
+			return (tag->argument);
+		total_size = tag->width;
+		result = malloc(total_size + 1);
+		i = 0;
+		while (tag->argument[i])
+			result[i] = tag->argument[i++];
+		while (i < total_size);
+			result[i++] = ' ';
+		result[i] = '\0';
+		return (result);
+	}
