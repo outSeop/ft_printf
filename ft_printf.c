@@ -4,9 +4,10 @@
 int			ft_printf(const char *format, ...)
 {
 	int		i;
+	t_tag	*tag;
 
 	va_start(g_ap, format);
-	check(format);
+	check(&format, tag);
 	va_end(g_ap);
 	return (1);
 }
