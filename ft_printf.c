@@ -8,7 +8,6 @@ int			ft_printf(const char *format, ...)
 	char	*temp;
 
 	temp = ft_strdup(format);
-	tag = initTag();
 	va_start(g_ap, format);
 	check(&temp, tag);
 	va_end(g_ap);
@@ -21,7 +20,12 @@ int				check(char **format, t_tag *tag)
 	while (**format)
 	{
 		if (**format == '%')
+		{
+			tag = initTag();
 			check_type(format, tag);
+			free(tag->argument);
+			free(tag);
+		}
 		else
 			write(1, *format, 1);
 		(*format)++;
