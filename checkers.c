@@ -26,8 +26,8 @@ int				check_type(char **format, t_tag *tag)
 	check_specifier(format, tag);
 	tag->argument = combine_fill(tag, tag->prec_len, '0');
 	tag->argument = combine_fill(tag, tag->width, tag->fill);
-	//write(1, tag->argument, tag->arg_len);
-	printf("%s", tag->argument);
+	write(1, tag->argument, tag->arg_len);
+	//printf("%s", tag->argument);
 	return (1);
 }
 
