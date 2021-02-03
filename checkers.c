@@ -289,8 +289,6 @@ char			*my_itoa(unsigned int n)
 	res[--len] = tmp % 10 + '0';
 	while (tmp /= 10)
 		res[--len] = tmp % 10 + '0';
-	if (n < 0)
-		res[0] = '-';
 	return (res);
 }
 
