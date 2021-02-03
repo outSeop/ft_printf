@@ -6,6 +6,7 @@ int			ft_printf(const char *format, ...)
 	int		i;
 	t_tag	*tag;
 
+	tag = initTag();
 	va_start(g_ap, format);
 	check(&format, tag);
 	va_end(g_ap);
