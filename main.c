@@ -4,6 +4,6 @@ int main()
 {
 	int i;
 
-	printf("%.3p", &i);
+	ft_printf("%d", 3);
 }
 
