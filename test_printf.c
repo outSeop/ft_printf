@@ -9,8 +9,8 @@ int main()
 {
 	int i = 123;
 
-	printf("printf: [%3p]\n", &i);
-	  func("functi: [%3p]\n", &i);
+	printf("printf: [%-6.4d]\n", i);
+	  func("functi: [%-6.4d]\n", i);
 }
 
 void	func(char *format, ...)

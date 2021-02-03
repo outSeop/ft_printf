@@ -45,9 +45,16 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 		result = malloc(total_size + 1);
 		i = 0;
 		while (tag->argument[i])
-			result[i] = tag->argument[i++];
-		while (i < total_size);
-			result[i++] = ' ';
+		{
+			result[i] = tag->argument[i];
+			i++;
+		}
+		while (i < total_size)
+		{
+			result[i] = ' ';
+			i++;
+		}
 		result[i] = '\0';
+		free(tag->argument);
 		return (result);
 	}
