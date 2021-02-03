@@ -5,10 +5,12 @@ int			ft_printf(const char *format, ...)
 {
 	int		i;
 	t_tag	*tag;
+	char	*temp;
 
+	temp = ft_strdup(format);
 	tag = initTag();
 	va_start(g_ap, format);
-	check(&format, tag);
+	check(&temp, tag);
 	va_end(g_ap);
 	return (1);
 }
