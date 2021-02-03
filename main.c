@@ -4,6 +4,6 @@ int main()
 {
 	int i = 3;
 
-	ft_printf("hello - [%3d]\n", i);
+	ft_printf("hello - [%3d] - world\n", i);
 }
 
