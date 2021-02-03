@@ -40,7 +40,8 @@ char					*trance_u(unsigned int u);
 char					*trance_p(void *p);
 char					*trance_hex(int X, char *arr);
 char					*trance_bin(int n);
-char			*my_itoa(unsigned int n);
-int				a_get_len(long long tmp);
+char					*combine_fill(t_tag *tag, int size, char fill);
+char					*my_itoa(unsigned int n);
+int						a_get_len(long long tmp);
 
 #endif

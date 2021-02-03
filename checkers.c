@@ -24,6 +24,9 @@ int				check_type(char **format, t_tag *tag)
 	check_width(format, tag);
 	check_precision(format, tag);
 	check_specifier(format, tag);
+	tag->argument = combine_fill(tag, tag->prec_len, '0');
+	tag->argument = combine_fill(tag, tag->width, tag->fill);
+	write(1, tag->argument, tag->arg_len);
 }
 
 int				check_flag(char **format, t_tag *tag)
@@ -34,6 +37,11 @@ int				check_flag(char **format, t_tag *tag)
 			tag->fill = '-';
 		else if (**format == '0')
 			tag->fill = '0';
+		else if (ft_isdigit(**format))
+		{
+			tag->fill = ' ';
+			return (1);
+		}
 		else if (**format == ' ')
 			tag->sign = '+';
 		else
@@ -236,6 +244,7 @@ char			*trance_hex(int hex, char *arr)
 		sum = 0;
 	}
 	str[i / 4] = '\0';
+	free(bin);
 	return (str);
 }
 
