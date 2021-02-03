@@ -7,10 +7,10 @@ void	func(char *format, ...);
 
 int main()
 {
-	int i = -124123;
+	int i = -123;
 
-	printf("printf: [%c]\n", '\0');
-	func("func: %X\n", i);
+	printf("printf: [%X]\n", i);
+	func("func: [%X]\n", i);
 }
 
 void	func(char *format, ...)

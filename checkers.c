@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int			check(char **format, t_tag *tag)
+int				check(char **format, t_tag *tag)
 {
 
 	while (**format)
@@ -18,7 +18,7 @@ int			check(char **format, t_tag *tag)
 	}
 	return (1);
 }
-int			check_type(char **format, t_tag *tag)
+int				check_type(char **format, t_tag *tag)
 {
 	check_flag(format, tag);
 	check_width(format, tag);
@@ -26,7 +26,7 @@ int			check_type(char **format, t_tag *tag)
 	check_specifier(format, tag);
 }
 
-int			check_flag(char **format, t_tag *tag)
+int				check_flag(char **format, t_tag *tag)
 {
 	while (**format)
 	{
@@ -43,9 +43,9 @@ int			check_flag(char **format, t_tag *tag)
 	return (1);
 }
 
-int			check_width(char **format, t_tag *tag)
+int				check_width(char **format, t_tag *tag)
 {
-	int		width;
+	int			width;
 
 
 	if (**format == '*')
@@ -68,7 +68,7 @@ int			check_width(char **format, t_tag *tag)
 	return (1);
 }
 
-int			check_precision(char **format, t_tag *tag)
+int				check_precision(char **format, t_tag *tag)
 {
 	if (**format == '.')
 	{
@@ -91,58 +91,36 @@ int			check_precision(char **format, t_tag *tag)
 	return(1);
 }
 
-int			check_specifier(char **format, t_tag *tag)
+int				check_specifier(char **format, t_tag *tag)
 {
 	if (**format == 'c')
-	{
-		tag->specifier = **format;
 		tag->argument = trance_c(va_arg(g_ap, int));
-	}
 	else if (**format == 's')
-	{
-		tag->specifier = **format;
 		tag->argument = trance_s(va_arg(g_ap, char*));
-	}
 	else if (**format == 'p')
-	{
-		tag->specifier = **format;
 		tag->argument = trance_p(va_arg(g_ap, void*));
-	}
 	else if (**format == 'd')
-	{
-		tag->specifier = **format;
 		tag->argument = trance_d(va_arg(g_ap, int));
-	}
 	else if (**format == 'i')
-	{
-		tag->specifier = **format;
 		tag->argument = trance_d(va_arg(g_ap, int));
 	else if (**format == 'u')
-	{
-		tag->specifier = **format;
 		tag->argument = trance_u(va_arg(g_ap, unsigned int));
-	}
 	else if (**format == 'x')
-	{
-		tag->specifier = **format;
 		tag->argument = trance_hex(va_arg(g_ap, int), "0123456789abcdef");
-	}
 	else if (**format == 'X')
-	{
-		tag->specifier = **format;
 		tag->argument = trance_hex(va_arg(g_ap, int), "0123456789ABCDEF");
-	}
-	// tag->arg_len = ft_strlen(tag->argument);
+	tag->specifier = **format;
+	tag->arg_len = ft_strlen(tag->argument);
 	return (1);
 }
 
 
-char		*my_str_cpy(char *str, char c, int nbr)
+char			*my_str_cpy(char *str, char c, int nbr)
 {
-	char	*temp;
-	int		size;
-	int		i;
-	int		j;
+	char		*temp;
+	int			size;
+	int			i;
+	int			j;
 
 	size = ft_strlen(str);
 	if (size >= nbr)
@@ -160,9 +138,9 @@ char		*my_str_cpy(char *str, char c, int nbr)
 	return (str);
 }
 
-t_tag		*initTag()
+t_tag			*initTag()
 {
-	t_tag	*tag;
+	t_tag		*tag;
 
 	tag = malloc(sizeof(t_tag));
 	tag->arg_len = 0;
@@ -175,9 +153,9 @@ t_tag		*initTag()
 }
 
 
-char		*trance_c(char c)
+char			*trance_c(char c)
 {
-	char	*str;
+	char		*str;
 
 	str = malloc(sizeof(c) + 1);
 	str[0] = c;
@@ -185,30 +163,28 @@ char		*trance_c(char c)
 	return (str);
 }
 
-char		*trance_s(char *s)
+char			*trance_s(char *s)
 {
 	return (s);
 }
 
-char		*trance_d(int d)
+char			*trance_d(int d)
 {
-	char	*str;
+	char		*str;
 
 	str = ft_itoa(d);
 	return (str);
 }
 
-char		*trance_u(unsigned int u)
+char			*trance_u(unsigned int u)
 {
-	unsigned int	i;
-	char			*str;
+	char		*str;
 
-	i = 4294967295;
-	printf("test: %s", my_itoa(i));
+	str = my_itoa(u);
 	return (str);
 }
 
-char		*trance_p(void *p)
+char			*trance_p(void *p)
 {
 	long long	lp;
 	char		*address;
@@ -237,12 +213,12 @@ char		*trance_p(void *p)
 	return (address);
 }
 
-char		*trance_hex(int hex, char *arr)
+char			*trance_hex(int hex, char *arr)
 {
-	char	*str;
-	char	*bin;
-	int		sum;
-	int		i;
+	char		*str;
+	char		*bin;
+	int			sum;
+	int			i;
 
 	str = malloc(9);
 	i = 0;
@@ -263,7 +239,7 @@ char		*trance_hex(int hex, char *arr)
 	return (str);
 }
 
-char		*trance_bin(int n)
+char			*trance_bin(int n)
 {
 	unsigned int	a;
 	int				i;
