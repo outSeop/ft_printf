@@ -27,6 +27,7 @@ int				check_type(char **format, t_tag *tag)
 	tag->argument = combine_fill(tag, tag->prec_len, '0');
 	tag->argument = combine_fill(tag, tag->width, tag->fill);
 	write(1, tag->argument, tag->arg_len);
+	return (1);
 }
 
 int				check_flag(char **format, t_tag *tag)
@@ -139,7 +140,10 @@ char			*my_str_cpy(char *str, char c, int nbr)
 		temp[i++] = c;
 	j = 0;
 	while (str[j])
-		temp[i + j - 1] = str[j++];
+	{
+		temp[i + j - 1] = str[j];
+		j++;
+	}
 	temp[i + j] = '\0';
 	free(str);
 	str = temp;
@@ -278,11 +282,6 @@ char			*my_itoa(unsigned int n)
 
 	len = 0;
 	tmp = n;
-	if (n < 0)
-	{
-		len++;
-		tmp = -tmp;
-	}
 	len += a_get_len(tmp);
 	if (!(res = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
