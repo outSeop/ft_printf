@@ -2,8 +2,8 @@
 
 int main()
 {
-	int i;
+	int i = 3;
 
-	ft_printf("%3d", 3);
+	ft_printf("hello - [%3d]\n", i);
 }
 
