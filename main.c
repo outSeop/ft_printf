@@ -4,6 +4,6 @@ int main()
 {
 	int i;
 
-	ft_printf("%d", 3);
+	ft_printf("%3d", 3);
 }
 
