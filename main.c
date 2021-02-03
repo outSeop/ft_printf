@@ -4,5 +4,5 @@ int main()
 {
 	int i = 3;
 
-	ft_printf("hello - [%3d] - world - [%c]\n", i, 'c');
+	ft_printf("[%d]\n[%c]\n[%s]\n", 1, 'c', "hello world");
 }
