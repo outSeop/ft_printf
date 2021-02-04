@@ -34,9 +34,9 @@ int				check(char **format, t_tag *tag)
 		else
 		{
 			write(1, *format, 1);
-		(*format)++;
 		}
+		(*format)++;
+	}
 	free(tag);
 	return (size);
-	}
 }
