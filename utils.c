@@ -31,7 +31,6 @@ void			initTag(t_tag *tag)
 	tag->arg_len = 0;
 	tag->argument = NULL;
 	tag->fill = '\0';
-	tag->print_out = NULL;
 	tag->sign = '\0';
 	tag->width = 0;
 }
