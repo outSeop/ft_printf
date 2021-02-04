@@ -11,7 +11,7 @@ int				check_type(char **format, t_tag *tag)
 	tag->argument = algin(tag);
 	write(1, tag->argument, tag->arg_len);
 	free(tag->argument);
-	return (1);
+	return (tag->arg_len);
 }
 
 int				check_flag(char **format, t_tag *tag)
