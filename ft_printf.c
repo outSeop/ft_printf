@@ -34,6 +34,7 @@ int				check(char **format, t_tag *tag)
 		else
 		{
 			write(1, *format, 1);
+			size++;
 		}
 		(*format)++;
 	}
