@@ -29,7 +29,7 @@ int				check(char **format, t_tag *tag)
 		if (**format == '%')
 		{
 			initTag(tag);
-			size = check_type(format, tag);
+			size += check_type(format, tag);
 		}
 		else
 		{
