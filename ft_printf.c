@@ -22,7 +22,7 @@ int				check(char **format, t_tag *tag)
 		if (**format == '%')
 		{
 			initTag(tag);
-			check_type(format, tag);
+			check_type(format, tag);	
 		}
 		else
 			write(1, *format, 1);

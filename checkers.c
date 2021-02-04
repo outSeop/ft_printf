@@ -10,6 +10,7 @@ int				check_type(char **format, t_tag *tag)
 	tag->argument = combine_fill(tag, tag->prec_len, '0');
 	tag->argument = algin(tag);
 	write(1, tag->argument, tag->arg_len);
+	free(tag->argument);
 	return (1);
 }
 
