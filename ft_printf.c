@@ -30,6 +30,7 @@ int				check(char **format, t_tag *tag)
 		{
 			initTag(tag);
 			size += check_type(format, tag);
+			free(tag);
 		}
 		else
 		{
@@ -38,6 +39,5 @@ int				check(char **format, t_tag *tag)
 		}
 		(*format)++;
 	}
-	free(tag);
 	return (size);
 }

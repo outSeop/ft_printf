@@ -28,6 +28,7 @@ char			*my_str_cpy(char *str, char c, int nbr)
 
 void			initTag(t_tag *tag)
 {
+	tag = malloc(sizeof(t_tag));
 	tag->arg_len = 0;
 	tag->argument = NULL;
 	tag->fill = '\0';
