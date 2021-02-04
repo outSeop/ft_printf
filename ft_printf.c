@@ -11,6 +11,7 @@ int			ft_printf(const char *format, ...)
 	va_start(g_ap, format);
 	tag = malloc(sizeof(t_tag));
 	check(&temp, tag);
+	free(temp);
 	va_end(g_ap);
 	return (1);
 }
@@ -22,7 +23,7 @@ int				check(char **format, t_tag *tag)
 		if (**format == '%')
 		{
 			initTag(tag);
-			check_type(format, tag);	
+			check_type(format, tag);
 		}
 		else
 			write(1, *format, 1);
