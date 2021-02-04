@@ -10,7 +10,8 @@ int			ft_printf(const char *format, ...)
 	temp = ft_strdup(format);
 	va_start(g_ap, format);
 	tag = malloc(sizeof(t_tag));
-	check(&temp, tag);
+	check(&format, tag);
+	free(temp);
 	va_end(g_ap);
 	return (1);
 }
