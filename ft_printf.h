@@ -19,7 +19,6 @@ typedef struct 			s_tag
 	int					arg_len;
 	int					prec_len;
 	char				*argument;
-	char				*print_out;
 	char				specifier;
 }						t_tag;
 
