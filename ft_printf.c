@@ -7,23 +7,16 @@ int			ft_printf(const char *format, ...)
 	t_tag	*tag;
 	char	*temp;
 	char	*rm;
-<<<<<<< HEAD
 	int		size;
-=======
->>>>>>> e619a0a757ca2c2ed104371c8cdcaf79985a0dd7
 
+	va_start(g_ap, format);
 	temp = ft_strdup(format);
 	rm = temp;
-	va_start(g_ap, format);
 	tag = malloc(sizeof(t_tag));
-<<<<<<< HEAD
-	check(&format, tag);
-=======
-	check(&temp, tag);
->>>>>>> e619a0a757ca2c2ed104371c8cdcaf79985a0dd7
+	size = check(&temp, tag);
 	free(rm);
 	va_end(g_ap);
-	return (1);
+	return (size);
 }
 
 int				check(char **format, t_tag *tag)
