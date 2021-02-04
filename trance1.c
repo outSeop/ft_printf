@@ -12,7 +12,10 @@ char			*trance_c(char c)
 
 char			*trance_s(char *s)
 {
-	return (s);
+	char		*str;
+
+	str = ft_strdup(s);
+	return (str);
 }
 
 char			*trance_d(int d)
