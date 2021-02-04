@@ -4,11 +4,17 @@ int				check_type(char **format, t_tag *tag)
 {
 	(*format)++;
 	check_flag(format, tag);
+	printf("1: %d\n", tag->arg_len);
 	check_width(format, tag);
+	printf("2: %d\n", tag->arg_len);
 	check_precision(format, tag);
+	printf("3: %d\n", tag->arg_len);
 	check_specifier(format, tag);
+	printf("4: %d\n", tag->arg_len);
 	tag->argument = combine_fill(tag, tag->prec_len, '0');
+	printf("5: %d\n", tag->arg_len);
 	tag->argument = algin(tag);
+	printf("6: %d\n", tag->arg_len);
 	write(1, tag->argument, tag->arg_len);
 	free(tag->argument);
 	return (tag->arg_len);
