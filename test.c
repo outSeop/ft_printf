@@ -2,6 +2,6 @@
 
 int main()
 {
-	ft_printf("%d\n", ft_printf("[%d]\n[%c]\n[%s]\n", 1, 'c', "123"));
+	ft_printf("%d\n",ft_printf("hello world!\n"));
 	while(1){}
 }
