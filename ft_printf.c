@@ -6,12 +6,14 @@ int			ft_printf(const char *format, ...)
 	int		i;
 	t_tag	*tag;
 	char	*temp;
+	char	*rm;
 
 	temp = ft_strdup(format);
+	rm = temp;
 	va_start(g_ap, format);
 	tag = malloc(sizeof(t_tag));
-	check(&format, tag);
-	free(temp);
+	check(&temp, tag);
+	free(rm);
 	va_end(g_ap);
 	return (1);
 }
