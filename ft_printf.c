@@ -14,6 +14,7 @@ int			ft_printf(const char *format, ...)
 	rm = temp;
 	tag = malloc(sizeof(t_tag));
 	size = check(&temp, tag);
+	free(tag);
 	free(rm);
 	va_end(g_ap);
 	return (size);
@@ -38,6 +39,5 @@ int				check(char **format, t_tag *tag)
 		}
 		(*format)++;
 	}
-	free(tag);
 	return (size);
 }
