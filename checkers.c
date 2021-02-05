@@ -85,6 +85,7 @@ int				check_precision(char **format, t_tag *tag)
 			}
 		}
 	}
+	printf("prec_len: %d\n", tag->prec_len);
 	return(1);
 }
 
