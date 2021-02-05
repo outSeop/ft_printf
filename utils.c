@@ -29,6 +29,7 @@ char			*my_str_cpy(char *str, char c, int nbr)
 void			initTag(t_tag *tag)
 {
 	tag->arg_len = 0;
+	tag->prec_len = 0;
 	tag->argument = NULL;
 	tag->fill = '\0';
 	tag->sign = '\0';
