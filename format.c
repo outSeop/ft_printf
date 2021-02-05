@@ -30,6 +30,7 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 	result[i] = '\0';
 	free(tag->argument);
 	tag->arg_len = total_size;
+	printf("total size: %d\n", total_size);
 	return (result);
 	}
 
