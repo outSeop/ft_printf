@@ -11,6 +11,12 @@ SRC =	ft_printf.c \
 		trance2.c \
 		utils.c \
 
+LIBFTC =	libft/ft_isdisit.c \
+			libft/ft_itoa.c \
+			libft/ft_strudup.c \
+			libft/ft_memset.c \
+			libft/ft_strlen.c \
+
 OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
@@ -18,8 +24,9 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
-$ (OBJ): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS)
+	
+$ (OBJ): $(SRC)
+	$(CC) $(CFLAGS) $(SRC)
 
 clean:
 	rm -f $(OBJ)
