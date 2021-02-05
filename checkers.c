@@ -100,6 +100,10 @@ int				check_specifier(char **format, t_tag *tag)
 		tag->argument = trance_hex(va_arg(g_ap, int), "0123456789abcdef");
 	else if (**format == 'X')
 		tag->argument = trance_hex(va_arg(g_ap, int), "0123456789ABCDEF");
+	else if (**format == '%')
+		tag->argument = trance_c('%');
+	else
+		tag->argument = trance_c(**format);
 	tag->specifier = **format;
 	tag->arg_len = ft_strlen(tag->argument);
 	return (1);
