@@ -13,7 +13,6 @@ int			ft_printf(const char *format, ...)
 	rm = temp;
 	tag = malloc(sizeof(t_tag));
 	size = check(&temp, tag);
-	printf("\n%d\n", tag->arg_len);
 	free(tag);
 	free(rm);
 	va_end(g_ap);
