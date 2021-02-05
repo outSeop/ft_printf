@@ -79,14 +79,13 @@ int				check_precision(char **format, t_tag *tag)
 		{
 			while (ft_isdigit(**format))
 			{
-				printf("[%d]\n", **format - '0');
+				printf("prec_len: %d\n", tag->prec_len);
 				tag->prec_len *= 10;
 				tag->prec_len += **format - '0';
 				(*format)++;
 			}
 		}
 	}
-	printf("prec_len: %d\n", tag->prec_len);
 	return(1);
 }
 
