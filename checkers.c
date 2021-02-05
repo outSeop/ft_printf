@@ -79,7 +79,6 @@ int				check_precision(char **format, t_tag *tag)
 		{
 			while (ft_isdigit(**format))
 			{
-				printf("prec_len: %d\n", tag->prec_len);
 				tag->prec_len *= 10;
 				tag->prec_len += **format - '0';
 				(*format)++;
@@ -108,7 +107,6 @@ int				check_specifier(char **format, t_tag *tag)
 	else if (**format == 'X')
 		tag->argument = trance_hex(va_arg(g_ap, int), "0123456789ABCDEF");
 	tag->specifier = **format;
-	printf("\ntest: %s\n", tag->argument);
 	tag->arg_len = ft_strlen(tag->argument);
 	return (1);
 }
