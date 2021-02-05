@@ -22,11 +22,9 @@ OBJ = $(SRC:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) $(LIBFTC)
+	@$(CC) $(CFLAGS) $(SRCS)
 	ar rcs $(NAME) $(OBJ)
-
-	
-$ (OBJ): $(SRC)
-	$(CC) $(CFLAGS) $(SRC)
 
 clean:
 	rm -f $(OBJ)
