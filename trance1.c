@@ -14,6 +14,11 @@ char			*trance_s(char *s)
 {
 	char		*str;
 
+	if (!s)
+	{
+		str = ft_strdup("(null)");
+		return (str);
+	}
 	str = ft_strdup(s);
 	return (str);
 }
