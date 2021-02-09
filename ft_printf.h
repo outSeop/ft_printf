@@ -41,6 +41,7 @@ char					*trance_hex(int X, char *arr);
 char					*trance_bin(int n);
 char					*algin(t_tag *tag);
 char					*align_left(t_tag *tag);
+char					*slice_str(t_tag *tag);
 char					*combine_fill(t_tag *tag, int size, char fill);
 char					*my_itoa(unsigned int n);
 int						a_get_len(long long tmp);
