@@ -7,7 +7,7 @@ int				check_type(char **format, t_tag *tag)
 	check_width(format, tag);
 	check_precision(format, tag);
 	check_specifier(format, tag);
-	tag->argument = 
+	tag->argument = refine(tag);
 	tag->argument = algin(tag);
 	write(1, tag->argument, tag->arg_len);
 	free(tag->argument);
@@ -20,7 +20,7 @@ int				check_flag(char **format, t_tag *tag)
 	{
 		if (**format == '-')
 			tag->fill = '-';
-		else if (**format == '0')
+		else if (**format == '0' && tag->fill != '-')
 			tag->fill = '0';
 		else if (ft_isdigit(**format) && !tag->fill)
 		{
@@ -63,6 +63,7 @@ int				check_precision(char **format, t_tag *tag)
 {
 	if (**format == '.')
 	{
+		tag->precision = 1;
 		(*format)++;
 		if (**format == '*')
 		{

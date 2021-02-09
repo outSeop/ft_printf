@@ -5,12 +5,15 @@ char			*algin(t_tag *tag)
 	if (tag->fill == '-')
 		return (align_left(tag));
 	else
-	{
-		if (tag->specifier == 's')
-			return (slice_str(tag));
-		else
-			return (combine_fill(tag, tag->width, tag->fill));
-	}
+		return (combine_fill(tag, tag->width, tag->fill));
+}
+
+char			*refine(t_tag *tag)
+{
+	if (tag->specifier == 's')
+		return (slice_str(tag));
+	else
+		return (combine_fill(tag, tag->prec_len, '0'));
 }
 
 char			*slice_str(t_tag *tag)
@@ -18,7 +21,7 @@ char			*slice_str(t_tag *tag)
 	char		*result;
 	int			i;
 
-	if (tag->arg_len < tag->prec_len)
+	if (tag->arg_len < tag->prec_len || tag->precision == 0)
 		return (tag->argument);
 	if (!(result = malloc(tag->prec_len + 1)))
 		return (NULL);
@@ -81,6 +84,7 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 			i++;
 		}
 		result[i] = '\0';
+		tag->arg_len = total_size;
 		free(tag->argument);
 		return (result);
 	}
