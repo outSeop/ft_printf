@@ -108,6 +108,6 @@ int				check_specifier(char **format, t_tag *tag)
 	else
 		tag->argument = trance_c(**format);
 	tag->specifier = **format;
-	tag->arg_len = ft_strlen(tag->argument) || 1;
+	tag->arg_len = ft_strlen(tag->argument);
 	return (1);
 }
