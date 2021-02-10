@@ -40,6 +40,7 @@ char			*slice_str(t_tag *tag)
 
 	if (tag->arg_len < tag->prec_len || tag->precision == 0)
 		return (tag->argument);
+		printf("\ntest\n");
 	if (!(result = malloc(tag->prec_len + 1)))
 		return (NULL);
 	i = 0;
