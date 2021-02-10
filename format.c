@@ -103,11 +103,11 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 char			*insert_char(char *str, int inserted_idx, int size, char c)
 {
 	char		*result;
-	int			total_size;
+	int			fill_size;
 	int			i;
 	int			j;
 
-	if (!(result = malloc(total_size = (ft_strlen(str) + size))))
+	if (!(result = malloc(size + 1)))
 		return (NULL);
 	i = 0;
 	while (i < inserted_idx)
@@ -115,12 +115,12 @@ char			*insert_char(char *str, int inserted_idx, int size, char c)
 		result[i] = str[i];
 		i++;
 	}
-	while (j < size)
+	while (j < size - ft_strlen(str))
 	{
 		result[i + j] = c;
 		j++;
 	}
-	while (i + j < total_size)
+	while (i + j < size)
 	{
 		result[i + j] = str[i];
 		i++;
