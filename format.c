@@ -11,7 +11,7 @@ char			*algin(t_tag *tag)
 		return (align_left(tag));
 	else
 	{
-		if (tag->sign < 0 && tag->specifier == 'd')
+		if (tag->sign < 0 && (tag->specifier == 'd' || tag->specifier == 'i'))
 		{
 			if (tag->fill == '0')
 				inserted = 1;
@@ -26,7 +26,7 @@ char			*refine(t_tag *tag)
 		return (slice_str(tag));
 	else
 	{
-		if (tag->sign < 0 && tag->specifier == 'd')
+		if (tag->sign < 0 && (tag->specifier == 'd' || tag->specifier == 'i'))
 			return (insert_char(tag->argument, 1, tag->prec_len + 1, '0'));
 		else
 			return (insert_char(tag->argument, 0, tag->prec_len, '0'));
