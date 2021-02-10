@@ -38,7 +38,7 @@ char			*slice_str(t_tag *tag)
 	char		*result;
 	int			i;
 
-		printf("\n====test====\narg_len, prec_len, pre\n", tag->arg_len, tag->prec_len, tag->precision);
+		printf("\n====test====\narg_len: %s\n prec_len: %s\n pre: %s\n", tag->arg_len, tag->prec_len, tag->precision);
 	if (tag->arg_len < tag->prec_len || tag->precision == 0)
 		return (tag->argument);
 	if (!(result = malloc(tag->prec_len + 1)))
