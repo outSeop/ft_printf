@@ -116,7 +116,10 @@ char			*insert_char(char *str, int inserted_idx, int size, char c)
 		i++;
 	}
 	while (j < size)
-		result[i + j++] = c;
+	{
+		result[i + j] = c;
+		j++;
+	}
 	while (i + j < total_size)
 	{
 		result[i + j] = str[i];
