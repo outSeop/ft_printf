@@ -16,7 +16,7 @@ char			*algin(t_tag *tag)
 			if (tag->fill == '0')
 				inserted = 1;
 		}
-	return (insert_char(tag->argument, inserted, tag->width + added_size, tag->fill));
+	return (insert_char(tag->argument, inserted, tag->width, tag->fill));
 	}
 }
 
@@ -126,7 +126,7 @@ char			*insert_char(char *str, int inserted_idx, int size, char c)
 		result[i] = str[i];
 		i++;
 	}
-	while (i + j < size - ft_strlen(str) + 1)
+	while (i + j < size - ft_strlen(str))
 	{
 		result[i + j] = c;
 		j++;
