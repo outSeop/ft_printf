@@ -81,9 +81,9 @@ int				check_precision(char **format, t_tag *tag)
 				(*format)++;
 			}
 		}
+		if (tag->prec_len < tag->width && tag->fill == '0')
+			tag->fill = ' ';
 	}
-	if (tag->prec_len < tag->width && tag->fill == '0')
-		tag->fill = ' ';
 	return(1);
 }
 
