@@ -11,9 +11,7 @@ char			*algin(t_tag *tag)
 			if (tag->fill == '0')
 			return (insert_char(tag->argument, 1, tag->width, tag->fill));
 		}
-		else
-			return (insert_char(tag->argument, 0, tag->width, tag->fill));
-		return (insert_char(tag->argument, 0, tag->width, tag->fill));
+	return (insert_char(tag->argument, 0, tag->width, tag->fill));
 	}
 }
 
