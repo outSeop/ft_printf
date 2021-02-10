@@ -38,12 +38,15 @@ char			*trance_hex(int hex, char *arr)
 	divider = 1;
 	while (divider < hex)
 		divider *= 16;
+	divider /= 16;
+	if (divider == 0)
+		divider++;
 	i = 0;
 	while (divider > 0)
 	{
-		divider /= 16;
 		address[i++] = arr[hex / divider];
 		hex %= divider;
+		divider /= 16;
 	}
 	address[i] = '\0';
 	return (address);
