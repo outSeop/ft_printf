@@ -110,6 +110,7 @@ char			*insert_char(char *str, int inserted_idx, int size, char c)
 	if (!(result = malloc(size + 1)))
 		return (NULL);
 	i = 0;
+	j = 0;
 	while (i < inserted_idx)
 	{
 		result[i] = str[i];
