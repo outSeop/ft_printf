@@ -5,7 +5,13 @@ char			*algin(t_tag *tag)
 	if (tag->fill == '-')
 		return (align_left(tag));
 	else
-		return (combine_fill(tag, tag->width, tag->fill));
+	{
+		if (tag->sign < 0 && tag->specifier == 'd')
+			return (insert_char(tag->argument, 1, tag->width, tag->fill));
+		else
+			return (insert_char(tag->argument, 0, tag->width, tag->fill))
+
+	}
 }
 
 char			*refine(t_tag *tag)
@@ -15,9 +21,9 @@ char			*refine(t_tag *tag)
 	else
 	{
 		if (tag->sign < 0 && tag->specifier == 'd')
-			return (insert_char(tag->argument, 1, tag->prec_len, '0')); 
+			return (insert_char(tag->argument, 1, tag->prec_len, '0'));
 		else
-			return (combine_fill(tag, tag->prec_len, '0'));
+			return (insert_char(tag->argument, 0, tag->prec_len, '0'))
 	}
 }
 
