@@ -106,7 +106,11 @@ char			*insert_char(char *str, int inserted_idx, int size, char c)
 	int			fill_size;
 	int			i;
 	int			j;
+	int			str_len;
 
+	str_len = ft_strlen(str);
+	if (str_len > size)
+		return (str);
 	if (!(result = malloc(size + 1)))
 		return (NULL);
 	i = 0;
