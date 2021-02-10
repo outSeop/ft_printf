@@ -21,7 +21,7 @@ char			*refine(t_tag *tag)
 	else
 	{
 		if (tag->sign < 0 && tag->specifier == 'd')
-			return (insert_char(tag->argument, 1, tag->prec_len, '0'));
+			return (insert_char(tag->argument, 1, tag->prec_len + 1, '0'));
 		else
 			return (insert_char(tag->argument, 0, tag->prec_len, '0'));
 	}
