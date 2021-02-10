@@ -39,8 +39,6 @@ char			*trance_hex(int hex, char *arr)
 	while (divider < hex)
 		divider *= 16;
 	divider /= 16;
-	address[0] = '0';
-	address[1] = 'x';
 	i = 2;
 	while (divider > 0)
 	{
