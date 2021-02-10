@@ -38,7 +38,7 @@ char					*trance_s(char *s);
 char					*trance_d(int d, t_tag *tag);
 char					*trance_u(unsigned int u);
 char					*trance_p(void *p);
-char					*trance_hex(int X, char *arr);
+char					*trance_hex(int hex);
 char					*trance_bin(int n);
 char					*algin(t_tag *tag);
 char					*align_left(t_tag *tag);

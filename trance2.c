@@ -27,31 +27,30 @@ char			*trance_p(void *p)
 	return (address);
 }
 
-char			*trance_hex(int hex, char *arr)
+char			*trance_hex(int hex)
 {
-	char		*str;
-	char		*bin;
-	int			sum;
+	char		*address;
 	int			i;
+	long long	divider;
 
-	str = malloc(9);
-	i = 0;
-	bin = trance_bin(hex);
-	sum = 0;
-	i = 0;
-	while (i < 32)
+	if (!(address = malloc(20)))
+		return (NULL);
+	divider = 1;
+	while (divider < hex)
+		divider *= 16;
+	divider /= 16;
+	address[0] = '0';
+	address[1] = 'x';
+	i = 2;
+	while (divider > 0)
 	{
-		sum += (bin[i + 0] - '0') * 8;
-		sum += (bin[i + 1] - '0') * 4;
-		sum += (bin[i + 2] - '0') * 2;
-		sum += (bin[i + 3] - '0') * 1;
-		str[i / 4] = arr[sum];
-		i += 4;
-		sum = 0;
+		address[i++] = "0123456789abcdef"[hex / divider];
+		hex %= divider;
+		divider /= 16;
 	}
-	str[i / 4] = '\0';
-	free(bin);
-	return (str);
+	address[i] = '\0';
+	return (address);
+
 }
 
 char			*trance_bin(int n)
