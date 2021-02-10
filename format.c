@@ -9,7 +9,7 @@ char			*algin(t_tag *tag)
 		if (tag->sign < 0 && tag->specifier == 'd')
 			return (insert_char(tag->argument, 1, tag->width, tag->fill));
 		else
-			return (insert_char(tag->argument, 0, tag->width, tag->fill))
+			return (insert_char(tag->argument, 0, tag->width, tag->fill));
 
 	}
 }
@@ -23,7 +23,7 @@ char			*refine(t_tag *tag)
 		if (tag->sign < 0 && tag->specifier == 'd')
 			return (insert_char(tag->argument, 1, tag->prec_len, '0'));
 		else
-			return (insert_char(tag->argument, 0, tag->prec_len, '0'))
+			return (insert_char(tag->argument, 0, tag->prec_len, '0'));
 	}
 }
 
@@ -111,11 +111,17 @@ char			*insert_char(char *str, int inserted_idx, int size, char c)
 		return (NULL);
 	i = 0;
 	while (i < inserted_idx)
-		result[i] = str[i++];
+	{
+		result[i] = str[i];
+		i++;
+	}
 	while (j < size)
-		reuslt[i + j++] = c;
+		result[i + j++] = c;
 	while (i + j < total_size)
-		reuslt[i + j] = str[i++];
+	{
+		result[i + j] = str[i];
+		i++;
+	}
 	result[i + j] = '\0';
 	free(str);
 	return (result);
