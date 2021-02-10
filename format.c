@@ -125,7 +125,7 @@ char			*insert_char(char *str, int inserted_idx, int size, char c)
 		result[i + j] = str[i];
 		i++;
 	}
-	result[i + j] = '\0';
+	result[size] = '\0';
 	free(str);
 	return (result);
 }
