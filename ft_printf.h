@@ -13,6 +13,7 @@
 
 typedef struct 			s_tag
 {
+	char				sign;
 	char				fill;
 	int					precision;
 	int					width;
@@ -34,7 +35,7 @@ int						check_specifier(char **format, t_tag *tag);
 void					initTag(t_tag *tag);
 char					*trance_c(char c);
 char					*trance_s(char *s);
-char					*trance_d(int d);
+char					*trance_d(int d, t_tag *tag);
 char					*trance_u(unsigned int u);
 char					*trance_p(void *p);
 char					*trance_hex(int X, char *arr);
@@ -42,6 +43,7 @@ char					*trance_bin(int n);
 char					*algin(t_tag *tag);
 char					*align_left(t_tag *tag);
 char					*refine(t_tag *tag);
+char					*insert_char(char *str, int inserted_idx, int size, char c);
 char					*slice_str(t_tag *tag);
 char					*combine_fill(t_tag *tag, int size, char fill);
 char					*my_itoa(unsigned int n);

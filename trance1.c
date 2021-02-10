@@ -23,10 +23,12 @@ char			*trance_s(char *s)
 	return (str);
 }
 
-char			*trance_d(int d)
+char			*trance_d(int d, t_tag *tag)
 {
 	char		*str;
 
+	if (d < 0)
+		tag->sign = -1;
 	str = ft_itoa(d);
 	return (str);
 }

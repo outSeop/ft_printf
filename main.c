@@ -2,6 +2,6 @@
 
 int main()
 {
-	printf("prt: [%-10s]\n", "123");
-	ft_printf("ftp: [%-10s]\n", "123");
+	printf("prt: [%.10d]\n", -123);
+	ft_printf("ftp: [%.10d]\n", -123);
 }

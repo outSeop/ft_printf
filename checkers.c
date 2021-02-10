@@ -91,10 +91,8 @@ int				check_specifier(char **format, t_tag *tag)
 		tag->argument = trance_s(va_arg(g_ap, char*));
 	else if (**format == 'p')
 		tag->argument = trance_p(va_arg(g_ap, void*));
-	else if (**format == 'd')
-		tag->argument = trance_d(va_arg(g_ap, int));
-	else if (**format == 'i')
-		tag->argument = trance_d(va_arg(g_ap, int));
+	else if (**format == 'd' || **format == 'i')
+		tag->argument = trance_d(va_arg(g_ap, int), tag);
 	else if (**format == 'u')
 		tag->argument = trance_u(va_arg(g_ap, unsigned int));
 	else if (**format == 'x')

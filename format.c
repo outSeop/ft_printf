@@ -13,7 +13,12 @@ char			*refine(t_tag *tag)
 	if (tag->specifier == 's')
 		return (slice_str(tag));
 	else
-		return (combine_fill(tag, tag->prec_len, '0'));
+	{
+		if (tag->sign < 0 && tag->specifier == 'd')
+			return (insert_char(tag->argument, 1, tag->prec_len, '0')); 
+		else
+			return (combine_fill(tag, tag->prec_len, '0'));
+	}
 }
 
 char			*slice_str(t_tag *tag)
@@ -60,7 +65,7 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 	free(tag->argument);
 	tag->arg_len = total_size;
 	return (result);
-	}
+}
 
 	char		*align_left(t_tag *tag)
 	{
@@ -88,3 +93,25 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 		free(tag->argument);
 		return (result);
 	}
+
+char			*insert_char(char *str, int inserted_idx, int size, char c)
+{
+	char		*result;
+	int			total_size;
+	int			i;
+	int			j;
+
+	if (!(result = malloc(total_size = (ft_strlen(str) + size))))
+		return (NULL);
+	i = 0;
+	while (i < inserted_idx)
+		result[i] = str[i++];
+	while (j < size)
+		reuslt[i + j++] = c;
+	while (i + j < total_size)
+		reuslt[i + j] = str[i++];
+	result[i + j] = '\0';
+	free(str);
+	return (result);
+}
+

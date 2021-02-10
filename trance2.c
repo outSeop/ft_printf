@@ -8,7 +8,7 @@ char			*trance_p(void *p)
 	long long	divider;
 
 	lp = (long long)p;
-	if(!(address = malloc(20))
+	if (!(address = malloc(20)))
 		return (NULL);
 	divider = 1;
 	while (divider < lp)
