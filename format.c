@@ -13,8 +13,9 @@ char			*algin(t_tag *tag)
 	{
 		if (tag->sign < 0 && tag->specifier == 'd')
 		{
+			if (tag->fill == '0')
+				inserted = 1;
 			added_size = 1;
-			inserted = 1;
 		}
 	return (insert_char(tag->argument, inserted, tag->width + added_size, tag->fill));
 	}
