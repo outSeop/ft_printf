@@ -27,7 +27,7 @@ char			*trance_p(void *p)
 	return (address);
 }
 
-char			*trance_hex(int hex)
+char			*trance_hex(int hex, char *arr)
 {
 	char		*address;
 	int			i;
@@ -44,7 +44,7 @@ char			*trance_hex(int hex)
 	i = 2;
 	while (divider > 0)
 	{
-		address[i++] = "0123456789abcdef"[hex / divider];
+		address[i++] = arr[hex / divider];
 		hex %= divider;
 		divider /= 16;
 	}
