@@ -39,7 +39,7 @@ char			*trance_hex(int hex, char *arr)
 	while (divider < hex)
 		divider *= 16;
 	divider /= 16;
-	i = 2;
+	i = 0;
 	while (divider > 0)
 	{
 		address[i++] = arr[hex / divider];
