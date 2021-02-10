@@ -2,16 +2,21 @@
 
 char			*algin(t_tag *tag)
 {
+	int			added_size;
+	int			inserted;
+
+	added_size = 0;
+	inserted = 0;
 	if (tag->fill == '-')
 		return (align_left(tag));
 	else
 	{
 		if (tag->sign < 0 && tag->specifier == 'd')
 		{
-			if (tag->fill == '0')
-			return (insert_char(tag->argument, 1, tag->width + 1, tag->fill));
+			added_size = 1;
+			inserted = 1;
 		}
-	return (insert_char(tag->argument, 0, tag->width, tag->fill));
+	return (insert_char(tag->argument, inserted, tag->width + added_size, tag->fill));
 	}
 }
 
