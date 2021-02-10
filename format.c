@@ -9,7 +9,7 @@ char			*algin(t_tag *tag)
 		if (tag->sign < 0 && tag->specifier == 'd')
 		{
 			if (tag->fill == '0')
-			return (insert_char(tag->argument, 1, tag->width, tag->fill));
+			return (insert_char(tag->argument, 1, tag->width + 1, tag->fill));
 		}
 	return (insert_char(tag->argument, 0, tag->width, tag->fill));
 	}
