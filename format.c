@@ -109,7 +109,6 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 char			*insert_char(char *str, int inserted_idx, int size, char c)
 {
 	char		*result;
-	int			fill_size;
 	int			i;
 	int			j;
 	int			str_len;
@@ -126,7 +125,7 @@ char			*insert_char(char *str, int inserted_idx, int size, char c)
 		result[i] = str[i];
 		i++;
 	}
-	while (i + j < size - ft_strlen(str) + inserted_idx)
+	while (i + j < size - (int)ft_strlen(str) + inserted_idx)
 	{
 		result[i + j] = c;
 		j++;
