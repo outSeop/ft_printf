@@ -109,7 +109,7 @@ int				check_specifier(char **format, t_tag *tag)
 			tag->argument = trance_c('%');
 		else
 			tag->argument = trance_c(**format);
-		if (ft_strncmp(tag->argument, "0", 1) && tag->prec_len == 0)
+		if (!ft_strncmp(tag->argument, "0", 1) && tag->prec_len == 0)
 		{
 			printf("\ntest\n");
 			tag->argument[0] ='\0';
