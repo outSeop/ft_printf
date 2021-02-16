@@ -5,6 +5,7 @@ int				check_type(char **format, t_tag *tag)
 	(*format)++;
 	check_flag(format, tag);
 	check_width(format, tag);
+	printf("test: %s\n", *format);
 	check_precision(format, tag);
 	check_specifier(format, tag);
 	tag->argument = refine(tag);
@@ -48,7 +49,7 @@ int				check_width(char **format, t_tag *tag)
 			width *= -1;
 			tag->fill = '-';
 		}
-		(*format) += 2;
+		(*format)++;
 	}
 	else
 	{
