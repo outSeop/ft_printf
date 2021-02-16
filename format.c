@@ -115,7 +115,7 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 		free(tag->argument);
 		return (result);
 	}
-
+/*
 char			*insert_char(char *str, int inserted_idx, int size, char c)
 {
 	char		*result;
@@ -145,6 +145,28 @@ char			*insert_char(char *str, int inserted_idx, int size, char c)
 		result[i + j] = str[i];
 		i++;
 	}
+	result[size] = '\0';
+	free(str);
+	return (result);
+}
+*/
+
+char			*insert_char(char *str, int idx, int size, char c)
+{
+	char		*result;
+	int			i;
+	int			str_len;
+
+	str_len = ft_strlen(str);
+	if (str_len > size)
+		return (str);
+	if (!(result = malloc(size + 1)))
+		return (NULL);
+	i = 0;
+	ft_strlcpy(result, str, idx);
+	while (idx + i < size - str_len)
+		result[idx + i++] = c;
+	ft_strlcpy(result + idx + i, str + idx, str_len - idx + 1);
 	result[size] = '\0';
 	free(str);
 	return (result);
