@@ -11,7 +11,7 @@ int				check_type(char **format, t_tag *tag)
 	tag->arg_len = ft_strlen(tag->argument);
 	tag->argument = algin(tag);
 	tag->arg_len = ft_strlen(tag->argument);
-	write(1, tag->argument, tag->arg_len);
+	ft_putstr_fd(tag->argument, 1);
 	free(tag->argument);
 	return (tag->arg_len);
 }
