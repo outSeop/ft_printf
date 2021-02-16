@@ -115,6 +115,9 @@ int				check_specifier(char **format, t_tag *tag)
 			tag->argument[0] ='\0';
 		}
 	}
+	printf("\n=====test=====\n");
+	printf("arg: %s\n", tag->argument);
+	printf("prec_len: %d\n", tag->arg_len);
 	tag->arg_len = ft_strlen(tag->argument);
 	return (1);
 }
