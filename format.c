@@ -30,6 +30,14 @@ char			*refine(t_tag *tag)
 			return (insert_char(tag->argument, 1, tag->prec_len + 1, '0'));
 		if (tag->specifier == 'p')
 			return (insert_char(tag->argument, 2, tag->prec_len + 2, '0'));
+		if (tag->prec_len == 0 && tag->argument[0] == '0')
+		{
+			free(tag->argument);
+			tag->argument = malloc(1);
+			tag->argument[0] = 0;
+			tag->arg_len = 1;
+			return (tag->argument);
+		}
 		else
 			return (insert_char(tag->argument, 0, tag->prec_len, '0'));
 	}
