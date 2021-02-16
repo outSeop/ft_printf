@@ -5,9 +5,9 @@ int				check_type(char **format, t_tag *tag)
 	(*format)++;
 	check_flag(format, tag);
 	check_width(format, tag);
-	printf("test: %s\n", *format);
 	check_precision(format, tag);
 	check_specifier(format, tag);
+	printf("test: %s\n", tag->argument);
 	tag->argument = refine(tag);
 	tag->arg_len = ft_strlen(tag->argument);
 	tag->argument = algin(tag);
