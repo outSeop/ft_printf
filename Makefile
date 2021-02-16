@@ -2,7 +2,7 @@ NAME = libftprintf.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Wall -I. -c
+CFLAGS = -Wall -Wextra -Werror -I. -c
 
 SRC =	ft_printf.c \
 		checkers.c \
