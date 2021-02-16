@@ -48,7 +48,7 @@ int				check_width(char **format, t_tag *tag)
 			width *= -1;
 			tag->fill = '-';
 		}
-		(*format)++;
+		(*format) += 2;
 	}
 	else
 	{
