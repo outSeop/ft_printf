@@ -7,7 +7,6 @@ int				check_type(char **format, t_tag *tag)
 	check_width(format, tag);
 	check_precision(format, tag);
 	check_specifier(format, tag);
-	printf("test: %s\n", tag->argument);
 	tag->argument = refine(tag);
 	tag->arg_len = ft_strlen(tag->argument);
 	tag->argument = algin(tag);
