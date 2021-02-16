@@ -162,7 +162,7 @@ char			*insert_char(char *str, int idx, int size, char c)
 	if (!(result = malloc(size + 1)))
 		return (NULL);
 	i = 0;
-	ft_strlcpy(result, str, idx);
+	ft_strlcpy(result, str, idx + 1);
 	printf("\n1: [%s]\n", result);
 	printf("2: %d\n", idx);
 	while (i < size - str_len)
