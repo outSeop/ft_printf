@@ -19,8 +19,8 @@ char			*algin(t_tag *tag)
 	printf("\n====test====\n");
 	printf("1: %s\n", tag->argument);
 	printf("2: %d\n", inserted);
-	printf("1: %d\n", tag->width);
-	printf("1: %c\n", tag->fill);
+	printf("3: %d\n", tag->width);
+	printf("4: %c\n", tag->fill);
 	return (insert_char(tag->argument, inserted, tag->width, tag->fill));
 	}
 }
