@@ -169,9 +169,9 @@ char			*insert_char(char *str, int idx, int size, char c)
 		result[idx + i] = c;
 		i++;
 	}
-	printf("1: %s\n", result);
+	printf("2: %s\n", result);
 	ft_strlcpy(result + idx + i, str + idx, str_len - idx + 1);
-	printf("1: %s\n", result);
+	printf("3: %s\n", result);
 	result[size] = '\0';
 	free(str);
 	return (result);
