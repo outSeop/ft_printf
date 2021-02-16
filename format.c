@@ -164,8 +164,6 @@ char			*insert_char(char *str, int idx, int size, char c)
 	i = 0;
 	ft_strlcpy(result, str, idx);
 
-	printf("\n===test====\n");
-	printf("%s\n", result);
 
 	while (i < size - str_len)
 	{
@@ -175,5 +173,7 @@ char			*insert_char(char *str, int idx, int size, char c)
 	ft_strlcpy(result + idx + i, str + idx, str_len - idx + 1);
 	result[size] = '\0';
 	free(str);
+	printf("\n===test====\n");
+	printf("%s\n", result);
 	return (result);
 }
