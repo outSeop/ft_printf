@@ -29,7 +29,7 @@ char			*refine(t_tag *tag)
 		if (tag->sign < 0 && (tag->specifier == 'd' || tag->specifier == 'i'))
 			return (insert_char(tag->argument, 1, tag->prec_len + 1, '0'));
 		if (tag->specifier == 'p')
-			return (insert_char(tag->argument, 2, tag->prec_len, '0'));
+			return (insert_char(tag->argument, 2, tag->prec_len + 2, '0'));
 		else
 			return (insert_char(tag->argument, 0, tag->prec_len, '0'));
 	}
