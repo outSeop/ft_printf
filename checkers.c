@@ -93,9 +93,7 @@ int				check_specifier(char **format, t_tag *tag)
 		tag->argument = trance_c(va_arg(g_ap, int));
 	else if (**format == 's')
 		tag->argument = trance_s(va_arg(g_ap, char*));
-	else
-	{
-		if (**format == 'p')
+	else if (**format == 'p')
 			tag->argument = trance_p(va_arg(g_ap, void*));
 		else if (**format == 'd' || **format == 'i')
 			tag->argument = trance_d(va_arg(g_ap, int), tag);
@@ -109,9 +107,6 @@ int				check_specifier(char **format, t_tag *tag)
 			tag->argument = trance_c('%');
 		else
 			tag->argument = trance_c(**format);
-		if (!ft_strncmp(tag->argument, "0", 1) && tag->prec_len == 0)
-			tag->argument[0] ='\0';
-	}
 	tag->arg_len = ft_strlen(tag->argument);
 	return (1);
 }
