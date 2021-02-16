@@ -62,7 +62,6 @@ int				check_width(char **format, t_tag *tag)
 		}
 	}
 	tag->width = width;
-	printf("test: %d\n", width);
 	return (1);
 }
 
