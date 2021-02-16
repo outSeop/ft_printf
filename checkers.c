@@ -44,8 +44,10 @@ int				check_width(char **format, t_tag *tag)
 	{
 		width = va_arg(g_ap, int);
 		if (width < 0)
+		{
 			width *= -1;
-		tag->fill = '-';
+			tag->fill = '-';
+		}
 		(*format)++;
 	}
 	else
