@@ -163,8 +163,6 @@ char			*insert_char(char *str, int idx, int size, char c)
 		return (NULL);
 	i = 0;
 	ft_strlcpy(result, str, idx + 1);
-	printf("\n1: [%s]\n", result);
-	printf("2: %d\n", idx);
 	while (i < size - str_len)
 	{
 		result[idx + i] = c;
