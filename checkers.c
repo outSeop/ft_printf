@@ -110,14 +110,8 @@ int				check_specifier(char **format, t_tag *tag)
 		else
 			tag->argument = trance_c(**format);
 		if (!ft_strncmp(tag->argument, "0", 1) && tag->prec_len == 0)
-		{
-			printf("\ntest\n");
 			tag->argument[0] ='\0';
-		}
 	}
-	printf("\n=====test=====\n");
-	printf("arg: %s\n", tag->argument);
-	printf("prec_len: %d\n", tag->arg_len);
 	tag->arg_len = ft_strlen(tag->argument);
 	return (1);
 }
