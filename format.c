@@ -143,7 +143,7 @@ char			*insert_char(char *str, int idx, int size, char c)
 		result[idx + i] = c;
 		i++;
 	}
-	ft_strlcpy(result + idx + i, str + idx, str_len - idx);
+	ft_strlcpy(result + idx + i, str + idx, str_len - idx + 1);
 	/*
 	while (i + j < size)
 	{
