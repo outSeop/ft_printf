@@ -11,6 +11,7 @@ int				check_type(char **format, t_tag *tag)
 	printf("\nTest: %d\n", tag->width);
 	printf("Test: %s\n", tag->argument);
 	printf("Test: %d\n", tag->prec_len);
+	printf("Test: %d\n", tag->precision);
 	printf("Test: %c\n", tag->specifier);
 
 	tag->argument = refine(tag);
