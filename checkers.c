@@ -10,6 +10,8 @@ int				check_type(char **format, t_tag *tag)
 
 	printf("\nTest: %d\n", tag->width);
 	printf("Test: %s\n", tag->argument);
+	printf("Test: %d\n", tag->prec_len);
+	printf("Test: %c\n", tag->specifier);
 
 	tag->argument = refine(tag);
 	tag->arg_len = ft_strlen(tag->argument);
@@ -59,7 +61,6 @@ int				check_width(char **format, t_tag *tag)
 		width = 0;
 		while (ft_isdigit(**format))
 		{
-
 			width *= 10;
 			width += **format - '0';
 			(*format)++;
