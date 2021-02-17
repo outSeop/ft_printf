@@ -33,7 +33,7 @@ void			initTag(t_tag *tag)
 	tag->precision = 0;
 	tag->prec_len = 0;
 	tag->argument = NULL;
-	tag->fill = '\0';
+	tag->fill = ' ';
 	tag->width = 0;
 }
 
