@@ -20,8 +20,11 @@ int				check_flag(char **format, t_tag *tag)
 	{
 		if (**format == '-')
 			tag->fill = '-';
-		else if (**format == '0' && tag->fill != '-')
-			tag->fill = '0';
+		else if (**format == '0')
+		{
+			if (tag->fill != '-')
+				tag->fill = '0';
+		}
 		else if (ft_isdigit(**format) && !tag->fill)
 		{
 			tag->fill = ' ';
@@ -82,11 +85,12 @@ int				check_precision(char **format, t_tag *tag)
 				(*format)++;
 			}
 		}
-		if (tag->prec_len < tag->width && tag->fill == '0')
-			tag->fill = ' ';
 	}
 	if (tag->prec_len < 0)
+	{
+		tag->prec_len = 0;
 		tag->precision = 0;
+	}
 	return(1);
 }
 
@@ -107,8 +111,14 @@ int				check_specifier(char **format, t_tag *tag)
 	else if (**format == 'X')
 		trance_hex(va_arg(g_ap, int), "0123456789ABCDEF", tag);
 	else if (**format == '%')
+	{
 		trance_c('%', tag);
+		tag->precision = 0;
+		tag->prec_len = 0;
+	}
 	else
 		trance_c(**format, tag);
+		if (tag->prec_len < tag->width && tag->fill == '0' && tag->prec_len >= 0 && tag->precision == 1)
+			tag->fill = ' ';
 	return (1);
 }

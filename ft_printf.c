@@ -1,12 +1,12 @@
 #include "ft_printf.h"
 
 
-int			ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
-	t_tag	*tag;
-	char	*temp;
-	char	*rm;
-	int		size;
+	t_tag		*tag;
+	char		*temp;
+	char		*rm;
+	int			size;
 
 	va_start(g_ap, format);
 	temp = ft_strdup(format);

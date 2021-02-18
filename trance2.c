@@ -2,6 +2,33 @@
 
 void			trance_p(void *p, t_tag *tag)
 {
+	long long		i;
+	int		j;
+	long long lp;
+
+	lp = (long long)p;
+	tag->argument = malloc(20);
+	tag->argument[0] = '0';
+	tag->argument[1] = 'x';
+	tag->argument[2] = 0;
+	i = 48;
+	j = 2;
+	while (i >= 0)
+	{
+		tag->argument[j] = "0123456789abcdef"[((lp >> i) & 15)];
+		if (tag->argument[2] != '0')
+			j++;
+		i -= 4;
+	}
+	if (j == 2)
+		tag->argument[j++] = '0';
+	tag->argument[j] = '\0';
+	tag->arg_len = ft_strlen(tag->argument);
+}
+
+/*
+void			trance_p(void *p, t_tag *tag)
+{
 	long long	lp;
 	int			i;
 	long long	divider;
@@ -27,6 +54,7 @@ void			trance_p(void *p, t_tag *tag)
 	tag->argument[i] = '\0';
 	tag->arg_len = ft_strlen(tag->argument);
 }
+*/
 
 void			test(int hex, char *arr)
 {

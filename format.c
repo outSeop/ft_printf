@@ -28,7 +28,8 @@ char			*refine(t_tag *tag)
 	{
 		if (tag->sign < 0 && (tag->specifier == 'd' || tag->specifier == 'i'))
 			return (insert_char(tag, 1, tag->prec_len + 1, '0'));
-		if (tag->prec_len == 0 && tag->argument[2] == '0' && tag->precision == 1 && tag->specifier == 'p')
+		if (tag->prec_len == 0 && tag->argument[2] == '0' && tag->precision == 1
+			&& tag->specifier == 'p')
 		{
 			ft_strlcpy(tag->argument, "0x", 3);
 			tag->arg_len = 2;
@@ -36,13 +37,13 @@ char			*refine(t_tag *tag)
 		}
 		if (tag->specifier == 'p')
 			return (insert_char(tag, 2, tag->prec_len + 2, '0'));
-		if (tag->prec_len == 0 && tag->argument[0] == '0' && tag->precision == 1)
+		if (tag->prec_len == 0 && tag->argument[0] == '0'
+			&& tag->precision == 1)
 		{
 			ft_strlcpy(tag->argument, "\0", 1);
 			tag->arg_len = 0;
 			return (tag->argument);
 		}
-
 		else
 			return (insert_char(tag, 0, tag->prec_len, '0'));
 	}
@@ -94,32 +95,31 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 	return (result);
 }
 
-	char		*align_left(t_tag *tag)
+char		*align_left(t_tag *tag)
+{
+	char	*result;
+	int		total_size;
+	int		i;
+	if (tag->arg_len > tag->width)
+		return (tag->argument);
+	total_size = tag->width;
+	result = malloc(total_size + 1);
+	i = 0;
+	while (i < tag->arg_len)
 	{
-		char	*result;
-		int		total_size;
-		int		i;
-
-		if (tag->arg_len > tag->width)
-			return (tag->argument);
-		total_size = tag->width;
-		result = malloc(total_size + 1);
-		i = 0;
-		while (i < tag->arg_len)
-		{
-			result[i] = tag->argument[i];
-			i++;
-		}
-		while (i < total_size)
-		{
-			result[i] = ' ';
-			i++;
-		}
-		result[i] = '\0';
-		tag->arg_len = total_size;
-		free(tag->argument);
-		return (result);
+		result[i] = tag->argument[i];
+		i++;
 	}
+	while (i < total_size)
+	{
+		result[i] = ' ';
+		i++;
+	}
+	result[i] = '\0';
+	tag->arg_len = total_size;
+	free(tag->argument);
+	return (result);
+}
 
 char			*insert_char(t_tag *tag, int idx, int size, char c)
 {
@@ -134,14 +134,12 @@ char			*insert_char(t_tag *tag, int idx, int size, char c)
 		return (NULL);
 	i = 0;
 	ft_memcpy(result, tag->argument, idx + 1);
-	//ft_strlcpy(result, tag->argument, idx + 1);
 	while (i < size - str_len)
 	{
 		result[idx + i] = c;
 		i++;
 	}
 	ft_memcpy(result + idx + i, tag->argument + idx, str_len - idx + 1);
-	//ft_strlcpy(result + idx + i, tag->argument + idx, str_len - idx + 1);
 	result[size] = '\0';
 	tag->arg_len = size;
 	free(tag->argument);

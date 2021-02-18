@@ -26,7 +26,7 @@ char			*my_str_cpy(char *str, char c, int nbr)
 	return (str);
 }
 
-void			initTag(t_tag *tag)
+void			init_tag(t_tag *tag)
 {
 	tag->sign = 0;
 	tag->arg_len = 1;
@@ -36,7 +36,6 @@ void			initTag(t_tag *tag)
 	tag->fill = ' ';
 	tag->width = 0;
 }
-
 
 char			*my_itoa(unsigned int n)
 {
@@ -55,7 +54,6 @@ char			*my_itoa(unsigned int n)
 		res[--len] = tmp % 10 + '0';
 	return (res);
 }
-
 
 int				a_get_len(long long tmp)
 {
