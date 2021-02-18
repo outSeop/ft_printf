@@ -1,42 +1,32 @@
 #include "ft_printf.h"
 
-char			*trance_c(char c)
+void			trance_c(char c, t_tag *tag)
 {
-	char		*str;
-
-	str = malloc(sizeof(c) + 1);
-	str[0] = c;
-	str[1] = '\0';
-	return (str);
+	tag->argument = malloc(sizeof(c) + 1);
+	tag->argument[0] = c;
+	tag->argument[1] = '\0';
+	tag->arg_len = 1;
 }
 
-char			*trance_s(char *s)
+void			trance_s(char *s, t_tag *tag)
 {
-	char		*str;
-
 	if (!s)
-	{
-		str = ft_strdup("(null)");
-		return (str);
-	}
-	str = ft_strdup(s);
-	return (str);
+		tag->argument = ft_strdup("(null)");
+	else
+		tag->argument = ft_strdup(s);
+	tag->arg_len = ft_strlen(tag->argument);
 }
 
-char			*trance_d(int d, t_tag *tag)
+void			trance_d(int d, t_tag *tag)
 {
-	char		*str;
-
 	if (d < 0)
 		tag->sign = -1;
-	str = ft_itoa(d);
-	return (str);
+	tag->argument = ft_itoa(d);
+	tag->arg_len = ft_strlen(tag->argument);
 }
 
-char			*trance_u(unsigned int u)
+void			trance_u(unsigned int u, t_tag *tag)
 {
-	char		*str;
-
-	str = my_itoa(u);
-	return (str);
+	tag->argument = my_itoa(u);
+	tag->arg_len = ft_strlen(tag->argument);
 }

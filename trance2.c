@@ -1,40 +1,41 @@
 #include "ft_printf.h"
 
-char			*trance_p(void *p)
+void			trance_p(void *p, t_tag *tag)
 {
 	long long	lp;
-	char		*address;
 	int			i;
 	long long	divider;
 
 	lp = (long long)p;
-	if (!(address = malloc(20)))
-		return (NULL);
+	if (!(tag->argument = malloc(20)))
+		return ;
 	divider = 1;
 	while (divider < lp)
 		divider *= 16;
 	divider /= 16;
-	address[0] = '0';
-	address[1] = 'x';
+	tag->argument[0] = '0';
+	tag->argument[1] = 'x';
 	i = 2;
 	while (divider > 0)
 	{
-		address[i++] = "0123456789abcdef"[lp / divider];
+		tag->argument[i++] = "0123456789abcdef"[lp / divider];
 		lp %= divider;
 		divider /= 16;
 	}
-	address[i] = '\0';
-	return (address);
+	if (i == 2)
+		tag->argument[i++] = '0';
+	tag->argument[i] = '\0';
+	tag->arg_len = ft_strlen(tag->argument);
 }
 
-char			*trance_hex(int hex, char *arr)
+void			test(int hex, char *arr)
 {
 	char		*address;
 	int			i;
 	long long	divider;
 
 	if (!(address = malloc(20)))
-		return (NULL);
+		return ;
 	divider = 1;
 	while (divider < hex)
 		divider *= 16;
@@ -49,15 +50,14 @@ char			*trance_hex(int hex, char *arr)
 		divider /= 16;
 	}
 	address[i] = '\0';
-	return (address);
 
 }
-
-char			*trance_bin(int n)
+/*
+void			trance_bin(int n)
 {
 	unsigned int	a;
 	int				i;
-	char			*arr;
+	void			arr;
 
 	a = 0x80000000;
 	arr = malloc(33);
@@ -72,5 +72,26 @@ char			*trance_bin(int n)
 		a >>= 1;
 		i++;
 	}
-	return (arr);
+}
+*/
+void		trance_hex(int value, char *arr, t_tag *tag)
+{
+	int		i;
+	int		j;
+
+	tag->argument = malloc(9);
+	tag->argument[0] = 0;
+	i = 28;
+	j = 0;
+	while (i >= 0)
+	{
+		tag->argument[j] = arr[((value >> i) & 15)];
+		if (tag->argument[0] != '0')
+			j++;
+		i -= 4;
+	}
+	if (j == 0)
+		j++;
+	tag->argument[j] = '\0';
+	tag->arg_len = ft_strlen(tag->argument);
 }

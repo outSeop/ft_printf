@@ -8,9 +8,7 @@ int				check_type(char **format, t_tag *tag)
 	check_precision(format, tag);
 	check_specifier(format, tag);
 	tag->argument = refine(tag);
-	tag->arg_len = ft_strlen(tag->argument);
 	tag->argument = algin(tag);
-	tag->arg_len = ft_strlen(tag->argument);
 	write(1, tag->argument, tag->arg_len);
 	free(tag->argument);
 	return (tag->arg_len);
@@ -87,29 +85,30 @@ int				check_precision(char **format, t_tag *tag)
 		if (tag->prec_len < tag->width && tag->fill == '0')
 			tag->fill = ' ';
 	}
+	if (tag->prec_len < 0)
+		tag->precision = 0;
 	return(1);
 }
 
 int				check_specifier(char **format, t_tag *tag)
 {
 	if ((tag->specifier = **format) == 'c')
-		tag->argument = trance_c(va_arg(g_ap, int));
+		trance_c(va_arg(g_ap, int), tag);
 	else if (**format == 's')
-		tag->argument = trance_s(va_arg(g_ap, char*));
+		trance_s(va_arg(g_ap, char*), tag);
 	else if (**format == 'p')
-			tag->argument = trance_p(va_arg(g_ap, void*));
-		else if (**format == 'd' || **format == 'i')
-			tag->argument = trance_d(va_arg(g_ap, int), tag);
-		else if (**format == 'u')
-			tag->argument = trance_u(va_arg(g_ap, unsigned int));
-		else if (**format == 'x')
-			tag->argument = trance_hex(va_arg(g_ap, int), "0123456789abcdef");
-		else if (**format == 'X')
-			tag->argument = trance_hex(va_arg(g_ap, int), "0123456789ABCDEF");
-		else if (**format == '%')
-			tag->argument = trance_c('%');
-		else
-			tag->argument = trance_c(**format);
-	tag->arg_len = ft_strlen(tag->argument);
+		trance_p(va_arg(g_ap, void*), tag);
+	else if (**format == 'd' || **format == 'i')
+		trance_d(va_arg(g_ap, int), tag);
+	else if (**format == 'u')
+		trance_u(va_arg(g_ap, unsigned int), tag);
+	else if (**format == 'x')
+		trance_hex(va_arg(g_ap, int), "0123456789abcdef", tag);
+	else if (**format == 'X')
+		trance_hex(va_arg(g_ap, int), "0123456789ABCDEF", tag);
+	else if (**format == '%')
+		trance_c('%', tag);
+	else
+		trance_c(**format, tag);
 	return (1);
 }
