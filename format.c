@@ -16,7 +16,7 @@ char			*algin(t_tag *tag)
 			if (tag->fill == '0')
 				inserted = 1;
 		}
-	return (insert_char(tag, inserted, tag->width, tag->fill));
+		return (insert_char(tag, inserted, tag->width, tag->fill));
 	}
 }
 
@@ -28,8 +28,8 @@ char			*refine(t_tag *tag)
 	{
 		if (tag->sign < 0 && (tag->specifier == 'd' || tag->specifier == 'i'))
 			return (insert_char(tag, 1, tag->prec_len + 1, '0'));
-		if (tag->prec_len == 0 && tag->argument[2] == '0' && tag->precision == 1
-			&& tag->specifier == 'p')
+		if (tag->prec_len == 0 && tag->argument[2] == '0'
+			&& tag->precision == 1 && tag->specifier == 'p')
 		{
 			ft_strlcpy(tag->argument, "0x", 3);
 			tag->arg_len = 2;
@@ -95,11 +95,12 @@ char			*combine_fill(t_tag *tag, int size, char fill)
 	return (result);
 }
 
-char		*align_left(t_tag *tag)
+char			*align_left(t_tag *tag)
 {
-	char	*result;
-	int		total_size;
-	int		i;
+	char		*result;
+	int			total_size;
+	int			i;
+
 	if (tag->arg_len > tag->width)
 		return (tag->argument);
 	total_size = tag->width;
