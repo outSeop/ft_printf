@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checkers.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: inssong <inssong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/23 19:34:57 by inssong           #+#    #+#             */
+/*   Updated: 2021/02/23 21:42:23 by inssong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int				check_type(char **format, t_tag *tag)
@@ -10,11 +22,11 @@ int				check_type(char **format, t_tag *tag)
 	tag->argument = refine(tag);
 	tag->argument = algin(tag);
 	write(1, tag->argument, tag->arg_len);
-	free(tag->argument);
+	save_free((void**)&tag->argument);
 	return (tag->arg_len);
 }
 
-int				check_flag(char **format, t_tag *tag)
+void			check_flag(char **format, t_tag *tag)
 {
 	while (**format)
 	{
@@ -28,16 +40,15 @@ int				check_flag(char **format, t_tag *tag)
 		else if (ft_isdigit(**format) && !tag->fill)
 		{
 			tag->fill = ' ';
-			return (1);
+			return ;
 		}
 		else
-			return (1);
+			return ;
 		(*format)++;
 	}
-	return (1);
 }
 
-int				check_width(char **format, t_tag *tag)
+void			check_width(char **format, t_tag *tag)
 {
 	int			width;
 
@@ -62,10 +73,9 @@ int				check_width(char **format, t_tag *tag)
 		}
 	}
 	tag->width = width;
-	return (1);
 }
 
-int				check_precision(char **format, t_tag *tag)
+void			check_precision(char **format, t_tag *tag)
 {
 	if (**format == '.')
 	{
@@ -91,10 +101,9 @@ int				check_precision(char **format, t_tag *tag)
 		tag->prec_len = 0;
 		tag->precision = 0;
 	}
-	return(1);
 }
 
-int				check_specifier(char **format, t_tag *tag)
+void			check_specifier(char **format, t_tag *tag)
 {
 	if ((tag->specifier = **format) == 'c')
 		trance_c(va_arg(g_ap, int), tag);
@@ -118,7 +127,7 @@ int				check_specifier(char **format, t_tag *tag)
 	}
 	else
 		trance_c(**format, tag);
-		if (tag->prec_len < tag->width && tag->fill == '0' && tag->prec_len >= 0 && tag->precision == 1)
-			tag->fill = ' ';
-	return (1);
+	if (tag->prec_len < tag->width && tag->fill == '0'
+		&& tag->prec_len >= 0 && tag->precision == 1)
+		tag->fill = ' ';
 }

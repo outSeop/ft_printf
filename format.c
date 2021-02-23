@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   format.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: inssong <inssong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/23 19:30:45 by inssong           #+#    #+#             */
+/*   Updated: 2021/02/23 21:42:49 by inssong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char			*algin(t_tag *tag)
@@ -66,32 +78,7 @@ char			*slice_str(t_tag *tag)
 	}
 	result[i] = '\0';
 	tag->arg_len = tag->prec_len;
-	free(tag->argument);
-	return (result);
-}
-
-char			*combine_fill(t_tag *tag, int size, char fill)
-{
-	char		*result;
-	int			total_size;
-	int			fill_size;
-	int			i;
-	int			j;
-
-	if (tag->arg_len > size)
-		return (tag->argument);
-	total_size = size;
-	fill_size = total_size - tag->arg_len;
-	result = malloc(total_size + 1);
-	i = 0;
-	while (i < fill_size)
-		result[i++] = fill;
-	j = 0;
-	while (i < total_size)
-		result[i++] = tag->argument[j++];
-	result[i] = '\0';
-	free(tag->argument);
-	tag->arg_len = total_size;
+	save_free((void**)&tag->argument);
 	return (result);
 }
 
@@ -118,7 +105,7 @@ char			*align_left(t_tag *tag)
 	}
 	result[i] = '\0';
 	tag->arg_len = total_size;
-	free(tag->argument);
+	save_free((void**)&tag->argument);
 	return (result);
 }
 
@@ -143,6 +130,6 @@ char			*insert_char(t_tag *tag, int idx, int size, char c)
 	ft_memcpy(result + idx + i, tag->argument + idx, str_len - idx + 1);
 	result[size] = '\0';
 	tag->arg_len = size;
-	free(tag->argument);
+	save_free((void**)&tag->argument);
 	return (result);
 }

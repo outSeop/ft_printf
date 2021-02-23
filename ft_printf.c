@@ -1,5 +1,16 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: inssong <inssong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/23 19:40:17 by inssong           #+#    #+#             */
+/*   Updated: 2021/02/23 21:42:10 by inssong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "ft_printf.h"
 
 int				ft_printf(const char *format, ...)
 {
@@ -13,8 +24,8 @@ int				ft_printf(const char *format, ...)
 	rm = temp;
 	tag = malloc(sizeof(t_tag));
 	size = check(&temp, tag);
-	free(tag);
-	free(rm);
+	save_free((void**)&tag);
+	save_free((void**)&rm);
 	va_end(g_ap);
 	return (size);
 }

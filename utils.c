@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: inssong <inssong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/23 19:31:11 by inssong           #+#    #+#             */
+/*   Updated: 2021/02/23 21:43:05 by inssong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -22,7 +33,7 @@ char			*my_str_cpy(char *str, char c, int nbr)
 		j++;
 	}
 	temp[i + j] = '\0';
-	free(str);
+	save_free((void**)&str);
 	str = temp;
 	return (str);
 }
@@ -61,4 +72,13 @@ int				a_get_len(long long tmp)
 	if (tmp < 10)
 		return (1);
 	return (a_get_len(tmp / 10) + 1);
+}
+
+void			save_free(void **pointer)
+{
+	if (pointer)
+	{
+		free(*pointer);
+		*pointer = NULL;
+	}
 }

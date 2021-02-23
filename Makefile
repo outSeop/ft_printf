@@ -11,12 +11,6 @@ SRC =	ft_printf.c \
 		trance2.c \
 		utils.c \
 
-LIBFTC =	libft/ft_itoa.c \
-			libft/ft_strdup.c \
-			libft/ft_memset.c \
-			libft/ft_strlen.c \
-			libft/ft_isdigit.c \
-
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
